@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>title</title>
     <link href="{{ asset('vendor/courier/css/style.css') }}" rel="stylesheet">
+    @yield("extra-css")
+    @yield("extra-js")
 
     <!--    lien vers les différentes font google-->
 
