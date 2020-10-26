@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function (){
-    return view('core::home');
+
+
+Route::group(['namespace' => 'Endemiel\Core\Http\Controllers'], function (){
+
+    Route::get('/', 'HomeController@index');
+
 });
