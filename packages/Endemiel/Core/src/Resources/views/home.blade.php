@@ -1,5 +1,5 @@
+@extends('core::layouts.master')
 
-
-<h1>Bienvenue</h1>
-
-@include('seadchbar')
+@section('main')
+{{--    main section--}}
+@endsection
