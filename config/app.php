@@ -166,9 +166,6 @@ return [
          * Package Service Providers...
          */
 
-        Endemiel\Core\Providers\CoreServiceProvider::class,
-        Endemiel\Map\Providers\MapServiceProvider::class,
-
         /*
          * Application Service Providers...
          */

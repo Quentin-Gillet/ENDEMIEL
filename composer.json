@@ -36,9 +36,7 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/",
-            "Endemiel\\Core\\": "packages/Endemiel/Core/src",
-            "Endemiel\\Map\\": "packages/Endemiel/Map/src"
+            "Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {

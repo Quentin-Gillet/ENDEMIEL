@@ -1,9 +1,7 @@
 @section("extra-css")
-    <link href="{{ asset('vendor/courier/css/Search_bar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/search-bar.css') }}" rel="stylesheet">
 @endsection
-@section("extra-js")
-    <script src="https://kit.fontawesome.com/4c22a0d41e.js" crossorigin="anonymous"></script>
-@endsection
+
 <section>
     <div class="search">
         <form class="search_bar">
