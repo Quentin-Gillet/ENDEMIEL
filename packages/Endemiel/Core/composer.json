@@ -1,0 +1,20 @@
+{
+    "name": "Endemiel/Core",
+    "description": "Core package of app",
+    "authors": [
+        {
+            "name": "Quentin-Gillet",
+            "email": "quentin_gillet@orange.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Endemiel\\Core\\": "src/"
+        }
+    },
+    "extra": {
+
+    }
+}
