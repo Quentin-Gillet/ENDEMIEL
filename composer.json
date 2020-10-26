@@ -37,7 +37,8 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Endemiel\\Core\\": "packages/Endemiel/Core/src"
+            "Endemiel\\Core\\": "packages/Endemiel/Core/src",
+            "Endemiel\\Map\\": "packages/Endemiel/Map/src"
         }
     },
     "autoload-dev": {

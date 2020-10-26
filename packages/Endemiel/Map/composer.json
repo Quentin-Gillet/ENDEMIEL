@@ -1,6 +1,6 @@
 {
-    "name": "endemiel/core",
-    "description": "Core package of app",
+    "name": "endemiel/map",
+    "description": "Map packages",
     "authors": [
         {
             "name": "Quentin-Gillet",
@@ -11,7 +11,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Endemiel\\Core\\": "src/"
+            "Endemiel\\Map\\": "src/"
         }
     }
 }

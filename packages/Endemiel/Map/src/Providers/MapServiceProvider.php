@@ -1,18 +1,20 @@
 <?php
 
-namespace Endemiel\Core\Providers;
+namespace Endemiel\Map\Providers;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
 
-class CoreServiceProvider extends ServiceProvider
+class MapServiceProvider extends ServiceProvider
 {
 
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__ . '/../Http/Routes/web.php');
 
-        $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'core');
+        $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'map');
+
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/migrations');
 
         $this->publishes([
             __DIR__.'/../Resources/assets' => public_path('vendor/courier'),
@@ -22,11 +24,6 @@ class CoreServiceProvider extends ServiceProvider
             '--tag' => ['public'],
             '--force' => true
         ]);
-    }
-
-    public function register()
-    {
-
     }
 
 }
