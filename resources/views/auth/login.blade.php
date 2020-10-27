@@ -1,8 +1,8 @@
 {{--@extends('layouts.master')--}}
 
 @section("extra-css")
+    @parent
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
-@show
 @endsection
 
 <section>
