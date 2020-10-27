@@ -1,4 +1,5 @@
 @section("extra-css")
+    @parent
     <link href="{{ asset('css/search-bar.css') }}" rel="stylesheet">
 @endsection
 

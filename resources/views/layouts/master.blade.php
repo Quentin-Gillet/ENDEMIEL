@@ -4,8 +4,9 @@
 
     <meta charset="UTF-8">
     <title>title</title>
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    @yield("extra-css")
+    @section("extra-css")
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    @show
     @yield("extra-js")
 
     <!--    lien vers les différentes font google-->

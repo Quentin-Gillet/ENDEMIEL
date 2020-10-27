@@ -1,4 +1,5 @@
-@section("extra-css")
+@section('extra-css')
+    @parent
     <link href="{{ asset('css/map.css') }}" rel="stylesheet">
 @endsection
 
