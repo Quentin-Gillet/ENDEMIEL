@@ -7,7 +7,9 @@
     @section("extra-css")
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     @show
-    @yield("extra-js")
+    @section('extra-js')
+        <script type="text/javascript" src="{{ asset('js/navbar-script.js') }}"></script>
+    @show
 
     <!--    lien vers les différentes font google-->
 

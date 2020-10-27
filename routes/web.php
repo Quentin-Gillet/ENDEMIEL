@@ -15,3 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+
+
+//Account route
+//Route::get('/account/login', [AccountController::class, 'login']);
