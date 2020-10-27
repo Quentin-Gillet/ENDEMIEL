@@ -21,6 +21,21 @@
 </head>
 <body>
     @include('layouts.navbar')
+
+    @if (session('status'))
+        {{--    En dessous faut que y'ai un bandeau vert qui apparait    --}}
+        <div class="">
+            {{ session('status') }}
+        </div>
+    @endif
+
+    @if($errors)
+        {{--    En dessous faut que y'ai un bandeau rouge qui apparait    --}}
+        <div class="">
+            {{ $errors }}
+        </div>
+    @endif
+
     @yield('content-wrapper')
 </body>
 </html>

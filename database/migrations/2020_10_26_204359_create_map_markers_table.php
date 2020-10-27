@@ -20,6 +20,7 @@ class CreateMapMarkersTable extends Migration
             $table->string('address');
             $table->string('name');
             $table->string('type');
+            $table->string('status');
             $table->text('description')->nullable();
             $table->text('images')->nullable();
             $table->timestamps();
