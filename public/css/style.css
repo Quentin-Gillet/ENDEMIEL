@@ -90,17 +90,18 @@ a{
     overflow-x: hidden;
     transition: 0.5s ease-in-out;
 }
-.lien2{
+.lien2, .form{
     position: relative;
     width: 300px;
     top: 30%;
+    display: block;
     margin-right: auto;
     margin-left: auto;
-    display: block;
+    text-align: center;
     font-weight: bold;
     font-family: 'Syne Mono', monospace;
     font-size: 26px;
-    padding-top: 50px;
+    padding-bottom: 50px;
     color: black;
 }
 .lien2 .icon_login{
