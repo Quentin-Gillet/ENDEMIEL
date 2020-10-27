@@ -1,3 +1,5 @@
+@extends('layouts.master')
+
 <form action="">
     @csrf
     @method('POST')
