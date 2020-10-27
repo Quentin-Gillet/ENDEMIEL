@@ -23,19 +23,41 @@
     @include('layouts.navbar')
 
     @if (session('status'))
-        {{--    En dessous faut que y'ai un bandeau vert qui apparait    --}}
+        {{--    En dessous faut que y ai un bandeau vert qui apparait    --}}
         <div class="">
             {{ session('status') }}
         </div>
     @endif
 
-    @if($errors)
-        {{--    En dessous faut que y'ai un bandeau rouge qui apparait    --}}
-        <div class="">
-            {{ $errors }}
-        </div>
-    @endif
-
     @yield('content-wrapper')
+
+    <script>
+        var i = 0;
+        var background = [
+
+            "url('{{ asset('images/back.jpg') }}')" ,
+            "url('{{ asset('images/back2.jpg') }}')" ,
+            "url('{{ asset('images/back3.jpg') }}')"
+
+        ];
+        var time = 6000;
+
+        function changeBackground() {
+            document.querySelector("body").style.backgroundImage = background[i];
+
+            if(i < background.length - 1){
+                i++;
+            } else {
+                i = 0;
+            }
+
+            setTimeout("changeBackground()", time);
+
+        }
+
+        window.onload = changeBackground;
+
+    </script>
+
 </body>
 </html>
