@@ -5,29 +5,19 @@
 
 @section('extra-js')
     @parent
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9DLSGr9zgS3xCeEuQcQXH2jSDH1vAhis&callback=initMap"></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLOBBi470XIAX1gnetthnSwET6XtorLEM&callback=initMap&language=fr"></script>
+    <script src="{{ asset('js/map.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer_compiled.js"></script>
 @endsection
 
     <section>
     <div class="container">
         <div class="inner">
             <div>
-                <h2 class="title_map">Explorer, Grimper, parmi les nombreux spots d'escalde disponibles !</h2>
+                <h2 class="title_map">Explorer, Grimper, parmi les nombreux spots d'escalade disponibles !</h2>
             </div>
             <div id="container_map"></div>
         </div>
     </div>
 </section>
-
-@section('extra-script')
-    <script>
-        function initMap(){
-            var options = {
-                zoom: 8,
-                center: {lat: 48.866667, lng: 2.333333},
-            };
-
-            var map = new google.maps.Map(document.getElementById('container_map'), options);
-        }
-    </script>
-@endsection

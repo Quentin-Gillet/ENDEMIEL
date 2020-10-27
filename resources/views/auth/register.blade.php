@@ -7,9 +7,9 @@
     <link href="{{ asset('css/register.css') }}" rel="stylesheet">
 </head>
 <body>
-<section>
-    <div class="main_register">
-        <div class="register_left">
+    <section>
+        <div class="main_register">
+            <div class="register_left">
                 <h2 class="title_register">Titre/logo</h2>
                 <form action="{{ route('register') }}" method="POST" class="form">
                     @csrf
@@ -21,12 +21,13 @@
                         <button class="button" type="button">S'enregistrer</button>
                     </div>
                 </form>
+            </div>
+            <div class="register_right">
+                <h2 class="title_account">Tu as déjà un compte</h2>
+                <br>
+                <a class="button" href="{{ route('login') }}">Se connecter</a>
+            </div>
         </div>
-        <div class="register_right">
-             <h2 class="title_account">Tu as déjà un compte</h2>
-             <button class="button">Se connecter</button>
-        </div>
-    </div>
-</section>
+    </section>
 </body>
 </html>
