@@ -7,7 +7,7 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    transition: 0.8s ease-in-out;
+    transition: 0.8s;
 }
 .inner{
     width: 100%;
@@ -29,6 +29,15 @@ body{
 .menu_left{
     float: left;
 }
+
+.link-button {
+    background: none;
+    border: none;
+    color: #0066ff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .lien, .lien_add{
     display: inline;
     margin: 50px;

@@ -1,9 +1,9 @@
-@extends('layouts.master')
+{{--@extends('layouts.master')--}}
 
-<form action="">
+
+<form action="{{ route('login') }}" method="POST">
     @csrf
-    @method('POST')
-    <input name="name">
-    <input name="password">
-    <button type="submit"></button>
+    <input name="email" placeholder="email">
+    <input name="password" placeholder="password">
+    <button type="submit">Submit</button>
 </form>

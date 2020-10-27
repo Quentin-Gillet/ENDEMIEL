@@ -22,14 +22,23 @@
 <body>
     @include('layouts.navbar')
 
+    {{--    Gestion des notification a success en vert    --}}
     @if (session('status'))
-        {{--    En dessous faut que y ai un bandeau vert qui apparait    --}}
         <div class="">
             {{ session('status') }}
         </div>
     @endif
 
+    {{--    Gestion des notifications avec erreurs en rouge    --}}
+    @if($errors->any())
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    @endif
+
     @yield('content-wrapper')
+
+    @yield('extra-script')
 
     <script>
         var i = 0;
@@ -44,15 +53,12 @@
 
         function changeBackground() {
             document.querySelector("body").style.backgroundImage = background[i];
-
             if(i < background.length - 1){
                 i++;
             } else {
                 i = 0;
             }
-
             setTimeout("changeBackground()", time);
-
         }
 
         window.onload = changeBackground;
