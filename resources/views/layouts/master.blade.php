@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>title</title>
+    <title>Endemiel</title>
     @section("extra-css")
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     @show

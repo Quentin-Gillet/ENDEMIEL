@@ -7,6 +7,13 @@
     <link href="{{ asset('css/register.css') }}" rel="stylesheet">
 </head>
 <body>
+    @if($errors->any())
+        <div>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </div>
+    @endif
     <section>
         <div class="main_register">
             <div class="register_left">
@@ -14,11 +21,11 @@
                 <form action="{{ route('register') }}" method="POST" class="form">
                     @csrf
                     <div class="subregister_login">
-                        <input type="text" class="input" placeholder="pseudo"><br>
-                        <input type="email" class="input" placeholder="email"><br>
-                        <input type="password" class="input" placeholder="mot de passe"><br>
-                        <input type="password" class="input" placeholder="confirmer le mot de passe"><br>
-                        <button class="button" type="button">S'enregistrer</button>
+                        <input type="text" class="input" placeholder="pseudo" name="name"> <br>
+                        <input type="email" class="input" placeholder="email" name="email"><br>
+                        <input type="password" class="input" placeholder="mot de passe" name="password"><br>
+                        <input type="password" class="input" placeholder="confirmer le mot de passe" name="password_confirmation"><br>
+                        <button class="button" type="submit">S'enregistrer</button>
                     </div>
                 </form>
             </div>

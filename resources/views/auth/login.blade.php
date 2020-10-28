@@ -8,6 +8,13 @@
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 </head>
 <body>
+    @if($errors->any())
+        <div>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </div>
+    @endif
     <section>
         <div class="main_container">
             <div class="container_left">
@@ -15,9 +22,9 @@
                 <form action="{{ route('login') }}" method="POST" class="form">
                     @csrf
                     <div class="subcontainer_login">
-                        <input type="email" class="input" placeholder="E-mail"><br>
-                        <input type="password" class="input" placeholder="Mot de passe"><br>
-                        <button class="button" type="button">Se connecter</button>
+                        <input type="email" class="input" placeholder="E-mail" name="email"><br>
+                        <input type="password" class="input" placeholder="Mot de passe" name="password"><br>
+                        <button class="button" type="submit">Se connecter</button>
                     </div>
                 </form>
             </div>
