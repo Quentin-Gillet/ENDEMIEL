@@ -1,20 +1,15 @@
 function open_submenu() {
-    document.querySelector(".search").style.top="-100em"
-    document.querySelector(".container").style.top="-100em"
-    document.querySelector(".submenu").style.height="100%"
-    window.addEventListener('scroll',noScroll)
+    document.querySelector(".search").style.bottom="-100em";
+    document.querySelector(".container").style.bottom="-100em";
+    document.querySelector(".submenu").style.height="100%";
+    document.body.style.overflow="hidden";
 
 }
 function close_submenu(){
-    document.querySelector(".search").style.top="0"
-    document.querySelector(".container").style.top="0"
+    document.querySelector(".search").style.bottom="0";
+    document.querySelector(".container").style.bottom="0";
     document.querySelector(".submenu").style.height="0%"
-    window.removeEventListener('scroll',noScroll);
+    document.body.style.overflow="initial";
 }
-
-function noScroll() {
-    window.scrollTo(0,0);
-}
-
 
 
