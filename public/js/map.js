@@ -39,6 +39,8 @@ async function initMap(){
     map.addListener("click", (e) => {
         console.log(e);
         document.querySelector('.popup').style.display = 'block';
+        window.scroll(0,600)
+        document.body.style.overflow="hidden";
         document.getElementById('marker_lat_input').value = e.latLng.lat();
         document.getElementById('marker_lng_input').value = e.latLng.lng();
     });
@@ -86,3 +88,11 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     );
     infoWindow.open(map);
 }
+
+function popup_quit() {
+    document.querySelector('.popup').style.display = 'none';
+    document.body.style.overflow="initial";
+
+}
+
+

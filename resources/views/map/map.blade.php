@@ -22,6 +22,7 @@
     </div>
     <div class="popup" style="display: none">
         <div class="popup_right">
+            <button class="button_quit" title="Fermer" onclick="popup_quit()"><i class="fas fa-times"></i></button>
             <h2 class="popup_title">Création de votre spot</h2>
             <form name="form" action="{{ route('marker.create') }}" method="POST">
                 @csrf
