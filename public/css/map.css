@@ -115,6 +115,11 @@
     padding-bottom: 30px;
 }
 .input_button{
+    display: flex;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
     font-family: 'Syne Mono', monospace;
     font-size: 17px;
     padding-left: 15px;
