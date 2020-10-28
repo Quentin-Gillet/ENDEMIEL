@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Se connecter</title>
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+    <link href="{{ asset('js/transition-to-page.js') }}" rel="stylesheet">
 </head>
 <body>
     <section>
