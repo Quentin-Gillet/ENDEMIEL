@@ -15,4 +15,8 @@ class MapMarker extends Model
         return $this->status == 'approved';
     }
 
+    public function author(){
+        return $this->belongsTo('App\Models\User', 'id', 'author_id');
+    }
+
 }

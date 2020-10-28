@@ -21,11 +21,15 @@ class MapMarkerController extends Controller
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
             'name' => 'required|max:255',
-            'images' => 'mimes:jpeg,jpg,png'
+            //'images' => 'mimes:jpeg,jpg,png'
         ]);
 
         $data = $request->all();
-        MapMarker::create($data);
+        $mapMarker = MapMarker::create($data);
+
+        if ($user = auth()->user()){
+            $user->mapMarkers()->save($mapMarker);
+        }
 
         return back()->with('success', 'Nouveau spot ajouter et en attente de vérification.');
     }

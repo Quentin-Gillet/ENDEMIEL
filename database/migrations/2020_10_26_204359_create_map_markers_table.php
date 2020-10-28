@@ -22,6 +22,7 @@ class CreateMapMarkersTable extends Migration
             $table->string('status')->default('pending');
             $table->text('description')->nullable();
             $table->text('images')->nullable();
+            $table->string('author_id')->nullable();
             $table->timestamps();
         });
     }
