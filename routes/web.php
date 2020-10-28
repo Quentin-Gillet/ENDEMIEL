@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
-//Marker route
+//Marker routes
 Route::get('/marker/all', [MapMarkerController::class, 'all'])->name('marker.all');
 Route::get('/marker/{id}', [MapMarkerController::class, 'get'])->name('marker.get');
 Route::post('/marker/create', [MapMarkerController::class, 'create'])->name('marker.create');

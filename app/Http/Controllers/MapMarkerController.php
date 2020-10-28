@@ -16,8 +16,15 @@ class MapMarkerController extends Controller
         return MapMarker::findOrFail($id);
     }
 
-    public function create(){
-        $data = request()->all();
+    public function create(Request $request){
+        dd('ok');
+        $data = $request->validate([
+            'lat' => 'required|numeric',
+            'lng' => 'required|numeric',
+            'name' => 'required|max:255',
+            'images' => 'image'
+        ]);
+
         MapMarker::create($data);
     }
 

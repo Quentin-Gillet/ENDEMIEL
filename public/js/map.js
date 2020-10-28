@@ -1,10 +1,24 @@
+let markers = [];
+let markerClusterer = null;
+let map = null;
+
 async function initMap(){
     var options = {
         zoom: 8,
         center: {lat: 48.866667, lng: 2.333333},
+        zoomControl: true,
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+        },
+        scaleControl: false,
+        streetViewControl: false, //A voir #TODO
+        rotateControl: false,
+        fullscreenControl: true
+
     };
 
-    var map = new google.maps.Map(document.getElementById('container_map'), options);
+    map = new google.maps.Map(document.getElementById('container_map'), options);
 
     var data = null
 
@@ -12,16 +26,24 @@ async function initMap(){
         .then(response => data = response.data)
         .catch(error => console.log(error));
 
-    const markers = data.map((data, i) => {
-        var location = {lat: data.latitude, lng: data.longitude}
-        return new google.maps.Marker({
+    data.forEach(function (element){
+        var location = {lat: element.latitude, lng: element.longitude}
+        var marker = new google.maps.Marker({
             position: location,
-            label: (data.id).toString(),
+            label: (element.id).toString(),
             map: map,
         });
+        markers.push(marker);
     });
 
-    new MarkerClusterer(map, markers, {
+    map.addListener("click", (e) => {
+        console.log(e);
+        document.querySelector('.popup').style.display = 'block';
+        document.getElementById('marker_lat_input').value = e.latLng.lat();
+        document.getElementById('marker_lng_input').value = e.latLng.lng();
+    });
+
+    markerClusterer = new MarkerClusterer(map, markers, {
         imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
     });
 
@@ -39,9 +61,9 @@ async function initMap(){
                         lat: position.coords.latitude,
                         lng: position.coords.longitude,
                     };
-                    infoWindow.setPosition(pos);
+                    /*infoWindow.setPosition(pos);
                     infoWindow.setContent("Vous êtes ici");
-                    infoWindow.open(map);
+                    infoWindow.open(map);*/
                     map.setCenter(pos);
                 },
                 () => {
