@@ -17,15 +17,17 @@ class MapMarkerController extends Controller
     }
 
     public function create(Request $request){
-        dd('ok');
-        $data = $request->validate([
-            'lat' => 'required|numeric',
-            'lng' => 'required|numeric',
+        $request->validate([
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
             'name' => 'required|max:255',
-            'images' => 'image'
+            'images' => 'mimes:jpeg,jpg,png'
         ]);
 
+        $data = $request->all();
         MapMarker::create($data);
+
+        return back()->with('success', 'Nouveau spot ajouter et en attente de vérification.');
     }
 
     public function update($id){

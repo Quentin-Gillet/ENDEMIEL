@@ -23,17 +23,19 @@
     @include('layouts.navbar')
 
     {{--    Gestion des notification a success en vert    --}}
-    @if (session('status'))
-        <div class="">
-            {{ session('status') }}
+    @if ($message = Session::get('success'))
+        <div class="" style="background-color: green">
+            {{ $message }}
         </div>
     @endif
 
     {{--    Gestion des notifications avec erreurs en rouge    --}}
     @if($errors->any())
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
+        <div style="background-color: red">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </div>
     @endif
 
     @yield('content-wrapper')

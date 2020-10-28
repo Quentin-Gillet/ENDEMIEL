@@ -9,7 +9,7 @@ class MapMarker extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['latitude', 'longitude', 'address', 'type', 'title', 'description', 'images'];
+    protected $fillable = ['latitude', 'longitude', 'address', 'type', 'name', 'description', 'images'];
 
     public function isApproved(){
         return $this->status == 'approved';
