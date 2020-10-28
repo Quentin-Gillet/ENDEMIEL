@@ -90,11 +90,14 @@ a{
     transition: 0.5s ease-in-out;
     overflow: hidden;
 }
-.lien2, .form{
+.block{
     position: relative;
-    width: 300px;
     top: 30%;
+}
+
+.lien2{
     display: block;
+    width: 300px;
     margin-right: auto;
     margin-left: auto;
     text-align: center;
