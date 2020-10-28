@@ -12,7 +12,7 @@
                             <div class="block">
                                 @guest
                                     <a href="{{ route('login') }}"><li class="lien2">Se connecter<span class="icon_login"><i class="fas fa-sign-in-alt"></i></span></li></a>
-                                    <a href="{{ route('register') }}"><li class="lien2">S' enregistrer<span class="icon_login"><i class="fas fa-user-plus"></i></span></li></a>
+                                    <a href="{{ route('register') }}"><li class="lien2">S'enregistrer<span class="icon_login"><i class="fas fa-user-plus"></i></span></li></a>
                                 @endguest
                                 @auth
                                     <a href="{{ route('user.account') }}"><li class="lien2">Mon espace<span class="icon_login"><i class="fas fa-user-circle"></i></span></li></a>
