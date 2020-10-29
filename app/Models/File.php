@@ -16,7 +16,7 @@ class File extends Model
         return $this->belongsTo('App\Models\MapMarker', 'id', 'marker_id');
     }
 
-    public function getFullPath(){
-        $contents = Storage::get($this->url);
+    public function getStoragePath(){
+        return '/storage/' . $this->url;
     }
 }
