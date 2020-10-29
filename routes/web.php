@@ -26,3 +26,4 @@ Route::put('/marker/update/{id}', [MapMarkerController::class, 'update'])->name(
 
 //Account route
 Route::get('/user/account', [UserController::class, 'index'])->name('user.account');
+Route::get('/test', [MapMarkerController::class, 'test']);
