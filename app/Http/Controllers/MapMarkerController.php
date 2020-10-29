@@ -27,25 +27,34 @@ class MapMarkerController extends Controller
         ]);
 
         $data = $request->all();
+        $mapMarker = MapMarker::create($data);
 
         if ($request->hasFile('files')) {
             foreach (request()->allFiles() as $file){
-                $file->store('files');
+                $path = $file->store('public/files');
+                $path = ltrim($path, 'public/');
+                $file = File::create([
+                    'url' => $path,
+                    'marker_id' => $mapMarker->id,
+                ]);
             }
         }
-
-        $mapMarker = MapMarker::create($data);
 
         if ($user = auth()->user()){
             $user->mapMarkers()->save($mapMarker);
         }
 
-        //return back()->with('success', 'Nouveau spot ajouter et en attente de vérification.');
+        return back()->with('success', 'Nouveau spot ajouter et en attente de vérification.');
     }
 
     public function update($id){
         $data = request()->all();
         MapMarker::where('id', $id)->update($data);
+    }
+
+    public function test(){
+        $mapMarkers = MapMarker::all();
+        return view('test.test',compact('mapMarkers'));
     }
 
 }
