@@ -29,9 +29,7 @@
             <span class="icon_error"><i class="fas fa-window-close"></i></span>
             <div class="title_bar"><span class="title_2">Erreur !</span></div>
             <div class="message_success">
-                @foreach ($errors->all() as $error)
-                    <li class="message_li">{{ $error }}</li>
-                @endforeach
+                <li class="message_li">{{ $errors->first() }}</li>
             </div>
             <div class="close">
                 <span title="Fermer" class="iconQuit" onclick="icon_close()"><i class="fas fa-times-circle"></i></span>

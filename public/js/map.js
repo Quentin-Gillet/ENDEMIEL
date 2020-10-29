@@ -14,9 +14,10 @@ async function initMap(){
         scaleControl: false,
         streetViewControl: false, //A voir #TODO
         rotateControl: false,
-        fullscreenControl: true
-
-    };
+        fullscreenControl: true,
+        gestureHandling: 'greedy',
+        minZoom: 6,
+        };
 
     map = new google.maps.Map(document.getElementById('container_map'), options);
 
