@@ -6,6 +6,7 @@
     <title>Endemiel</title>
     @section("extra-css")
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/marker-indicators.css') }}" rel="stylesheet">
     @show
     @section('extra-js')
         <script type="text/javascript" src="{{ asset('js/navbar-script.js') }}"></script>
@@ -22,21 +23,8 @@
 <body>
     @include('layouts.navbar')
 
-    {{--    Gestion des notification a success en vert    --}}
-    @if ($message = Session::get('success'))
-        <div class="" style="background-color: green">
-            {{ $message }}
-        </div>
-    @endif
+    @include('components.marker-indicators')
 
-    {{--    Gestion des notifications avec erreurs en rouge    --}}
-    @if($errors->any())
-        <div style="background-color: red">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </div>
-    @endif
 
     @yield('content-wrapper')
 

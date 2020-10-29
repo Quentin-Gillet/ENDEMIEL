@@ -11,5 +11,10 @@ function close_submenu(){
     document.querySelector(".submenu").style.height="0%"
     document.body.style.overflow="initial";
 }
+function icon_close() {
+    document.querySelector(".border_message").style.display="none";
+    document.body.style.overflow="initial";
+
+}
 
 
