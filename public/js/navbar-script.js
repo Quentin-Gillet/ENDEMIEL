@@ -13,7 +13,6 @@ function close_submenu(){
 }
 function icon_close() {
     document.querySelector(".border_message").style.display="none";
-    document.body.style.overflow="initial";
 
 }
 

@@ -20,7 +20,6 @@
             setTimeout(function() {
                 document.querySelector(".close").style.opacity = "100%";
                 document.querySelector(".close").style.cursor = "pointer";
-                document.body.style.overflow="hidden";
             },500);
 
         }, 1500);
@@ -47,7 +46,6 @@
                 setTimeout(function (){
                         document.querySelector(".close_2").style.opacity = "100%";
                         document.querySelector(".close_2").style.cursor = "pointer";
-                        document.body.style.overflow="hidden";
                     },500);
 
 
