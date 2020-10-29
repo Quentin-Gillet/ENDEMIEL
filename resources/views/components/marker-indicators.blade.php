@@ -2,8 +2,7 @@
     @if ($message = Session::get('success'))
    <div class="border_message">
         <span class="icon_success"><i class="fas fa-check-circle"></i></span>
-        <div class="bar"></div>
-        <div class="title_bar"><span class="title_2">En cours ...</span></div>
+        <div class="title_bar"><span class="title_2">Terminé !</span></div>
         <div class="message_success">
             {{ $message }}
         </div>
@@ -12,9 +11,7 @@
         </div>
    </div>
    <script>
-        document.querySelector(".bar").style.width="90%";
         setTimeout(function (){
-            document.querySelector(".title_2").innerHTML = "Terminé !";
             document.querySelector(".icon_success").style.opacity = "0%";
             document.querySelector(".message_success").style.opacity = "100%";
             setTimeout(function() {

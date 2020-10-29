@@ -1,6 +1,6 @@
 .border_message{
     position: absolute;
-    top:50%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     width: 400px;
@@ -13,17 +13,7 @@
     box-shadow: 1px 1px 59px 1px rgba(255,255,255,1);
 
 }
-.bar{
-    position: relative;
-    top: 25%;
-    width: 10%;
-    height: 30px;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 0%, rgba(0,255,72,1) 100%);
-    border-radius: 20px;
-    margin: 20px;
-    transition: width 1.5s ease-in-out;
-}
+
 .title_bar{
     position: relative;
     top: 25%;
@@ -50,7 +40,7 @@
 .message_success{
     opacity: 0;
     position: relative;
-    top: -50%;
+    top: -30%;
     color: black;
     font-family: 'Syne Mono', monospace;
     text-align: center;
@@ -63,7 +53,7 @@
     display: flex;
     justify-content: center;
     position: relative;
-    top: -90%;
+    top: -73%;
     transition: 0.3s ease-in-out;
 }
 .iconQuit{
