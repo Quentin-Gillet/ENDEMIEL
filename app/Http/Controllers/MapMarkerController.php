@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\File;
 use App\Models\MapMarker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MapMarkerController extends Controller
 {
@@ -21,17 +23,24 @@ class MapMarkerController extends Controller
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
             'name' => 'required|max:255',
-            //'images' => 'mimes:jpeg,jpg,png'
+            'files' => 'mimes:jpeg,jpg,png'
         ]);
 
         $data = $request->all();
+
+        if ($request->hasFile('files')) {
+            foreach (request()->allFiles() as $file){
+                $file->store('files');
+            }
+        }
+
         $mapMarker = MapMarker::create($data);
 
         if ($user = auth()->user()){
             $user->mapMarkers()->save($mapMarker);
         }
 
-        return back()->with('success', 'Nouveau spot ajouter et en attente de vérification.');
+        //return back()->with('success', 'Nouveau spot ajouter et en attente de vérification.');
     }
 
     public function update($id){

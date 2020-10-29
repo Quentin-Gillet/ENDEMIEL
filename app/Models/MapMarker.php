@@ -19,4 +19,8 @@ class MapMarker extends Model
         return $this->belongsTo('App\Models\User', 'id', 'author_id');
     }
 
+    public function files(){
+        return $this->hasMany('App\Models\File', 'file_id');
+    }
+
 }
