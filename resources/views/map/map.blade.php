@@ -30,7 +30,7 @@
                 <input type="hidden" id="marker_lng_input" name="longitude">
                 <input class="input_name" type="text" placeholder="Nom de votre spot" name="name">
                 <textarea class="input_description" name="description" rows="10" cols="50" placeholder="Ajouter une description"></textarea>
-                <label type="file" class="label">
+                <label type="file" class="label" onclick="check_file()">
                     <span class="label_title">Choisir un fichier</span>
                     <input class="input_image" name="files" type="file" accept=".jpg,.jpeg,.png">
                 </label>
