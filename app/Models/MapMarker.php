@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use function PHPUnit\Framework\isEmpty;
 
 class MapMarker extends Model
 {
@@ -21,6 +22,10 @@ class MapMarker extends Model
 
     public function files(){
         return $this->hasMany('App\Models\File', 'marker_id');
+    }
+
+    public function hasFiles(){
+        return $this->files()->exists();
     }
 
 }

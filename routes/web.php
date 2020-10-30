@@ -21,6 +21,7 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 //Marker routes
 Route::get('/marker/all', [MapMarkerController::class, 'all'])->name('marker.all');
 Route::get('/marker/{id}', [MapMarkerController::class, 'get'])->name('marker.get');
+Route::get('/marker/info-window/{id}', [MapMarkerController::class, 'getInfoWindow'])->name('marker.info-window');
 Route::post('/marker/create', [MapMarkerController::class, 'create'])->name('marker.create');
 Route::put('/marker/update/{id}', [MapMarkerController::class, 'update'])->name('marker.update');
 

@@ -52,6 +52,11 @@ class MapMarkerController extends Controller
         MapMarker::where('id', $id)->update($data);
     }
 
+    public function getInfoWindow($id){
+        $mapMarker = MapMarker::find($id);
+        return view('components.info-window-marker', compact('mapMarker'));
+    }
+
     public function test(){
         $mapMarkers = MapMarker::all();
         return view('test.test',compact('mapMarkers'));

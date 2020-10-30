@@ -17,6 +17,6 @@ class File extends Model
     }
 
     public function getStoragePath(){
-        return '/storage/' . $this->url;
+        return asset('/storage/' . $this->url);
     }
 }

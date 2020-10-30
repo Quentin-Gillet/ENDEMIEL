@@ -17,7 +17,7 @@ async function initMap(){
         fullscreenControl: true,
         gestureHandling: 'greedy',
         minZoom: 6,
-        };
+    };
 
     map = new google.maps.Map(document.getElementById('container_map'), options);
 
@@ -32,13 +32,22 @@ async function initMap(){
         var marker = new google.maps.Marker({
             position: location,
             label: (element.id).toString(),
+            title: element.name,
             map: map,
+        });
+        marker.addListener("click", async () => {
+            await axios.get('/marker/info-window/' + element.id)
+                .then(response => data = response.data)
+                .catch(error => console.log(error));
+
+            const infoWindow = new google.maps.InfoWindow({
+                content: data,
+            }).open(map, marker);
         });
         markers.push(marker);
     });
 
     map.addListener("click", (e) => {
-        console.log(e);
         document.querySelector('.popup').style.display = 'block';
         window.scroll(0,600)
         document.body.style.overflow="hidden";
@@ -50,7 +59,7 @@ async function initMap(){
         imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
     });
 
-    infoWindow = new google.maps.InfoWindow();
+    var infoWindow = new google.maps.InfoWindow();
     const locationButton = document.createElement("button");
     locationButton.textContent = "Aller a votre position";
     locationButton.classList.add("custom-map-control-button");
@@ -58,21 +67,18 @@ async function initMap(){
     locationButton.addEventListener("click", () => {
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const pos = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude,
-                    };
-                    /*infoWindow.setPosition(pos);
-                    infoWindow.setContent("Vous êtes ici");
-                    infoWindow.open(map);*/
-                    map.setCenter(pos);
-                },
-                () => {
-                    handleLocationError(true, infoWindow, map.getCenter());
-                }
-            );
+            navigator.geolocation.getCurrentPosition((position) => {
+                const pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                };
+                /*infoWindow.setPosition(pos);
+                infoWindow.setContent("Vous êtes ici");
+                infoWindow.open(map);*/
+                map.setCenter(pos);
+            },() => {
+                handleLocationError(true, infoWindow, map.getCenter());
+            });
         } else {
             // Browser doesn't support Geolocation
             handleLocationError(false, infoWindow, map.getCenter());
