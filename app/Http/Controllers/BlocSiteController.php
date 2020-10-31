@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\File;
 use App\Models\BlocSite;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class BlocSiteController extends Controller
 {
@@ -28,6 +27,7 @@ class BlocSiteController extends Controller
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
             'name' => 'required|max:255',
+            'description' => 'required',
             'files' => 'mimes:jpeg,jpg,png'
         ]);
 

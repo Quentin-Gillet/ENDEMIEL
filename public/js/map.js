@@ -3,6 +3,11 @@ let markerClusterer = null;
 let map = null;
 
 async function initMap(){
+
+    let infoWindow = new google.maps.InfoWindow;
+    let addSiteInfoWindow = new google.maps.InfoWindow;
+    let addSiteMarker = new google.maps.Marker;
+
     var options = {
         zoom: 8,
         center: {lat: 48.866667, lng: 2.333333},
@@ -39,31 +44,24 @@ async function initMap(){
                 .then(response => data = response.data)
                 .catch(error => console.log(error));
 
-            const infoWindow = new google.maps.InfoWindow({
-                content: data,
-            }).open(map, marker);
+            infoWindow.setContent(data);
+            infoWindow.open(map, marker);
         });
         markers.push(marker);
     });
 
     map.addListener("click", (e) => {
-        /*document.querySelector('.popup').style.display = 'block';
-        window.scroll(0,600)
-        document.body.style.overflow="hidden";*/
         var lat = e.latLng.lat();
         var lng = e.latLng.lng();
 
         var data = '<a href="/bloc-site/create/' + lat +'/' + lng +'"><button>Créer un site</button></a>'
 
-        var addSiteMarker = new google.maps.Marker({
-            position: e.latLng,
-            title: 'Nouveau site ?',
-            map: map,
-        });
+        addSiteMarker.setPosition(e.latLng);
+        addSiteMarker.setTitle(e.latLng);
+        addSiteMarker.setMap(map);
 
-        var addSiteInfoWindow = new google.maps.InfoWindow({
-            content: data,
-        });
+        addSiteInfoWindow.setContent(data);
+
         google.maps.event.addListener(addSiteInfoWindow, 'closeclick', function() {
             addSiteMarker.setVisible(false);
         });
