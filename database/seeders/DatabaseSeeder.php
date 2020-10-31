@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\MapMarker;
+use App\Models\BlocSite;
 use Faker\Generator;
 use Illuminate\Database\Seeder;
 

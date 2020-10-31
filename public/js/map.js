@@ -3,6 +3,11 @@ let markerClusterer = null;
 let map = null;
 
 async function initMap(){
+
+    let infoWindow = new google.maps.InfoWindow;
+    let addSiteInfoWindow = new google.maps.InfoWindow;
+    let addSiteMarker = new google.maps.Marker;
+
     var options = {
         zoom: 8,
         center: {lat: 48.866667, lng: 2.333333},
@@ -22,7 +27,6 @@ async function initMap(){
     map = new google.maps.Map(document.getElementById('container_map'), options);
 
     var data = null
-
     await axios.get('/marker/all')
         .then(response => data = response.data)
         .catch(error => console.log(error));
@@ -40,49 +44,33 @@ async function initMap(){
                 .then(response => data = response.data)
                 .catch(error => console.log(error));
 
-            const infoWindow = new google.maps.InfoWindow({
-                content: data,
-            }).open(map, marker);
+            infoWindow.setContent(data);
+            infoWindow.open(map, marker);
         });
         markers.push(marker);
     });
 
     map.addListener("click", (e) => {
-        document.querySelector('.popup').style.display = 'block';
-        window.scroll(0,600)
-        document.body.style.overflow="hidden";
-        document.getElementById('marker_lat_input').value = e.latLng.lat();
-        document.getElementById('marker_lng_input').value = e.latLng.lng();
+        var lat = e.latLng.lat();
+        var lng = e.latLng.lng();
+
+        var data = '<a href="/bloc-site/create/' + lat +'/' + lng +'"><button>Créer un site</button></a>'
+
+        addSiteMarker.setPosition(e.latLng);
+        addSiteMarker.setTitle(e.latLng);
+        addSiteMarker.setMap(map);
+
+        addSiteInfoWindow.setContent(data);
+
+        google.maps.event.addListener(addSiteInfoWindow, 'closeclick', function() {
+            addSiteMarker.setVisible(false);
+        });
+        addSiteInfoWindow.open(map, addSiteMarker)
+
     });
 
     markerClusterer = new MarkerClusterer(map, markers, {
         imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
-    });
-
-    var infoWindow = new google.maps.InfoWindow();
-    const locationButton = document.createElement("button");
-    locationButton.textContent = "Aller a votre position";
-    locationButton.classList.add("custom-map-control-button");
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-    locationButton.addEventListener("click", () => {
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((position) => {
-                const pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
-                };
-                /*infoWindow.setPosition(pos);
-                infoWindow.setContent("Vous êtes ici");
-                infoWindow.open(map);*/
-                map.setCenter(pos);
-            },() => {
-                handleLocationError(true, infoWindow, map.getCenter());
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-        }
     });
 }
 
@@ -95,18 +83,3 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     );
     infoWindow.open(map);
 }
-
-function popup_quit() {
-    document.querySelector('.popup').style.display = 'none';
-    document.body.style.overflow="initial";
-
-}
-function check_file() {
-    window.addEventListener("change", check);
-}
-function check() {
-    if (document.querySelector(".label").value =! null) {
-        document.querySelector(".label_title").innerHTML = "1 fichier choisi";
-    }
-}
-
