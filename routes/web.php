@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BlocSiteController;
 use App\Http\Controllers\MapMarkerController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -20,11 +21,14 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 
 //Marker routes
 Route::get('/marker/all', [MapMarkerController::class, 'all'])->name('marker.all');
-Route::get('/marker/{id}', [MapMarkerController::class, 'get'])->name('marker.get');
 Route::get('/marker/info-window/{id}', [MapMarkerController::class, 'getInfoWindow'])->name('marker.info-window');
-Route::post('/marker/create', [MapMarkerController::class, 'create'])->name('marker.create');
-Route::put('/marker/update/{id}', [MapMarkerController::class, 'update'])->name('marker.update');
+
+//Bloc site routes
+Route::get('/bloc-site/{id}', [BlocSiteController::class, 'get'])->name('bloc-site.get');
+Route::get('/bloc-site/create/{lat}/{lng}', [BlocSiteController::class, 'redirectToCreatePage'])->name('bloc-site.redirect-create');
+Route::post('/bloc-site/create', [BlocSiteController::class, 'create'])->name('bloc-site.create');
+Route::put('/bloc-site/update/{id}', [BlocSiteController::class, 'update'])->name('bloc-site.update');
 
 //Account route
 Route::get('/user/account', [UserController::class, 'index'])->name('user.account');
-Route::get('/test', [MapMarkerController::class, 'test']);
+Route::get('/test', [BlocSiteController::class, 'test']);
