@@ -35,3 +35,4 @@
 
 <script type="text/javascript" src="{{ asset('vendor/jildertmiedema/laravel-plupload/js/plupload.full.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/bloc-form.js') }}"></script>
+

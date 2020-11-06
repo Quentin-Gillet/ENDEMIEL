@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Requests\BlocSiteRequest;
 use App\Models\File;
 use App\Models\BlocSite;
@@ -33,6 +34,7 @@ class BlocSiteController extends Controller
         $blocSite = BlocSite::create($validated);
         $file = File::where('file_upload_id', '=', $validated['file_upload_id'])->first();
         $blocSite->files()->save($file);
+
 
 
         if ($user = auth()->user()){
