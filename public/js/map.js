@@ -17,7 +17,7 @@ async function initMap(){
             style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
         },
         scaleControl: false,
-        streetViewControl: false, //A voir #TODO
+        streetViewControl: false, //A voir TODO
         rotateControl: false,
         fullscreenControl: true,
         gestureHandling: 'greedy',

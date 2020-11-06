@@ -33,9 +33,10 @@ Route::put('/bloc-site/update/{id}', [BlocSiteController::class, 'update'])->nam
 //File upload
 Route::post('/bloc-site/files-upload', [FileUploadController::class, 'filesUpload'])->name('bloc-site.files-upload');
 
-
 //Account route
 Route::get('/user/account', [UserController::class, 'index'])->name('user.account');
 
+//Test routes
 Route::get('/test', [BlocSiteController::class, 'test']);
 Route::post('/test', [BlocSiteController::class, 'testPost'])->name('test.post');
+

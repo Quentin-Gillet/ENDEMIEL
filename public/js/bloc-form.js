@@ -68,8 +68,8 @@ function checkInputEmpty() {
 }
 
 document.getElementById('start-upload').onclick = function() {
-    /*if (checkInputEmpty()){
+    if (checkInputEmpty()){
         return;
-    }*/
+    }
     current_uploader.start();
 };

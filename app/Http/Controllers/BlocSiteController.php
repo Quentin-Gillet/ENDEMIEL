@@ -26,12 +26,14 @@ class BlocSiteController extends Controller
         return view('bloc-site.index', ['action' => 'create', 'location' => $params]);
     }
 
+
     public function create(BlocSiteRequest $request){
         $validated = $request->validated();
         $validated['status'] = 'approved'; //TODO REMOVE FOR PRODUCTION
         $blocSite = BlocSite::create($validated);
         $file = File::where('file_upload_id', '=', $validated['file_upload_id'])->first();
         $blocSite->files()->save($file);
+
 
         if ($user = auth()->user()){
             $user->blocSite()->save($blocSite);

@@ -3,6 +3,7 @@ var background = [
     "url('{{ asset('images/back.jpg') }}')",
     "url('{{ asset('images/back2.jpg') }}')",
     "url('{{ asset('images/back3.jpg') }}')"
+
 ];
 var time = 6000;
 
