@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use function PHPUnit\Framework\isEmpty;
 
-class MapMarker extends Model
+class BlocSite extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['latitude', 'longitude', 'name', 'description'];
+    protected $fillable = ['latitude', 'longitude', 'name', 'description', 'status'];
 
     public function isApproved(){
         return $this->status == 'approved';
@@ -21,7 +21,7 @@ class MapMarker extends Model
     }
 
     public function files(){
-        return $this->hasMany('App\Models\File', 'marker_id');
+        return $this->hasMany('App\Models\File', 'bloc_site_id');
     }
 
     public function hasFiles(){

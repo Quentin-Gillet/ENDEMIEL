@@ -9,7 +9,11 @@
         <link href="{{ asset('css/marker-indicators.css') }}" rel="stylesheet">
     @show
     @section('extra-js')
+        <script type="text/javascript" src="{{ asset('js/master.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/navbar-script.js') }}"></script>
+    @show
+    @section('extra-meta')
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     @show
 
     <!--    lien vers les différentes font google-->
@@ -23,37 +27,10 @@
 <body>
     @include('layouts.navbar')
 
-    @include('components.marker-indicators')
-
+    @yield('head-body-section')
 
     @yield('content-wrapper')
 
     @yield('extra-script')
-
-    <script>
-        var i = 0;
-        var background = [
-
-            "url('{{ asset('images/back.jpg') }}')" ,
-            "url('{{ asset('images/back2.jpg') }}')" ,
-            "url('{{ asset('images/back3.jpg') }}')"
-
-        ];
-        var time = 6000;
-
-        function changeBackground() {
-            document.querySelector("body").style.backgroundImage = background[i];
-            if(i < background.length - 1){
-                i++;
-            } else {
-                i = 0;
-            }
-            setTimeout("changeBackground()", time);
-        }
-
-        window.onload = changeBackground;
-
-    </script>
-
 </body>
 </html>
