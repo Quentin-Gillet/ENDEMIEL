@@ -1,19 +1,8 @@
-function open_submenu() {
-    document.querySelector(".search").style.bottom="-100em";
-    document.querySelector(".container").style.bottom="-100em";
-    document.querySelector(".submenu").style.height="100%";
-    document.body.style.overflow="hidden";
-
-}
-function close_submenu(){
-    document.querySelector(".search").style.bottom="0";
-    document.querySelector(".container").style.bottom="0";
-    document.querySelector(".submenu").style.height="0%"
-    document.body.style.overflow="initial";
-}
-function icon_close() {
-    document.querySelector(".border_message").style.display="none";
-
-}
-
-
+window.addEventListener('scroll',()=>{
+    if (window.scrollY > 500){
+        document.querySelector(".navbar").style.backgroundColor = 'rgba(0,0,0,0.8)';
+        document.querySelector(".container2").style.left = "0";
+    } else {
+        document.querySelector(".navbar").style.backgroundColor = 'rgba(0,0,0,0)';
+    }
+})
