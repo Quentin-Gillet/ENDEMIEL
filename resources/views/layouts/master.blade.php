@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -25,7 +24,6 @@
     @yield('extra-script')
 
     @include('footer.footer')
-
 
 </body>
 </html>
