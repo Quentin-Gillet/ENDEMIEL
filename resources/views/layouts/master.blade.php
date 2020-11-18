@@ -12,7 +12,6 @@
     @show
 
     <!--    lien vers les différentes font google-->
-
     <script src="https://kit.fontawesome.com/4c22a0d41e.js" crossorigin="anonymous"></script>
 
 </head>
@@ -23,7 +22,6 @@
 
     @yield('extra-script')
 
-    @include('footer.footer')
-
+    @include('layouts.footer')
 </body>
 </html>

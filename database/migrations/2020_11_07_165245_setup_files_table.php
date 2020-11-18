@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFilesTable extends Migration
+class SetupFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,9 @@ class CreateFilesTable extends Migration
         Schema::create('files', function (Blueprint $table) {
             $table->id();
             $table->string('url');
-            $table->integer('marker_id');
+            $table->string('file_type')->nullable();
+            $table->integer('bloc_spot_id')->nullable();
+            $table->string('file_upload_id')->nullable();
             $table->timestamps();
         });
     }

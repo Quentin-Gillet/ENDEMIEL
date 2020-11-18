@@ -41,7 +41,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function mapMarkers(){
-        return $this->hasMany('App\Models\MapMarker', 'author_id');
+    public function blocSpot(){
+        return $this->hasMany('App\Models\BlocSpot', 'author_id');
     }
 }

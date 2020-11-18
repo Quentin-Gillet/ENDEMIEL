@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RemoveSomeColumnsMapMarkersTable extends Migration
+class RemoveAllTables extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class RemoveSomeColumnsMapMarkersTable extends Migration
      */
     public function up()
     {
-        Schema::table('map_markers', function (Blueprint $table) {
-            $table->dropColumn('type');
-            $table->dropColumn('images');
-        });
+        Schema::dropIfExists('files');
+        Schema::dropIfExists('bloc_sites');
     }
 
     /**

@@ -10,10 +10,10 @@ class File extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['marker_id', 'url'];
+    protected $fillable = ['bloc_site_id', 'url', 'file_type', 'file_upload_id'];
 
-    public function mapMarker(){
-        return $this->belongsTo('App\Models\MapMarker', 'id', 'marker_id');
+    public function blocSpot(){
+        return $this->belongsTo('App\Models\BlocSpot', 'id', 'bloc_site_id');
     }
 
     public function getStoragePath(){
