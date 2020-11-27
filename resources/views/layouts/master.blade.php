@@ -21,7 +21,5 @@
     @include('main-page.main')
 
     @yield('extra-script')
-
-    @include('layouts.footer')
 </body>
 </html>

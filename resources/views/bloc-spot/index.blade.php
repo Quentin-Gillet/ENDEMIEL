@@ -1,4 +1,4 @@
-@include('layouts.master')
+
 <link href="{{ asset('css/bloc-spot.css') }}" rel="stylesheet">
 
 @if(!isset($action))

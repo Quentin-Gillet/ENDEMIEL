@@ -1,0 +1,186 @@
+body{
+    padding: 0;margin: 0;
+}
+.block-content{
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    height: auto;
+    background: rgb(222,227,227);
+    background: -moz-radial-gradient(circle, rgba(222,227,227,1) 50%, rgba(249,252,252,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(222,227,227,1) 50%, rgba(249,252,252,1) 100%);
+    background: radial-gradient(circle, rgba(222,227,227,1) 50%, rgba(249,252,252,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dee3e3",endColorstr="#f9fcfc",GradientType=1);
+}
+.block-content2{
+    position: relative;
+    width: 80%;
+    height: auto;
+    background-color: white;
+    margin: auto;
+    padding: 0px 30px;
+}
+.geolocal, .approche, .alentours, .apropos{
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+.h2{
+    padding-top: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.p{
+    font-family: 'Quicksand', sans-serif;
+}
+.block1{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px 50px;
+    grid-gap: 25px 25px;
+    padding-bottom: 30px;
+}
+.block2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 30px;
+    grid-gap: 25px 25px;
+}
+.block3{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 30px;
+    grid-gap: 25px 25px;
+}
+.block4{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px  50px 50px 50px 50px;
+    grid-gap: 25px 25px;
+    padding-bottom: 30px;
+}
+.block5{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 25px 25px;
+    padding-bottom: 30px;
+}
+.label{
+    font-family: 'Quicksand', sans-serif;
+    padding-right: 15px;
+    letter-spacing: 2px;
+}
+.label-submit{
+    font-family: 'Quicksand', sans-serif;
+    padding-right: 15px;
+    letter-spacing: 2px;
+    font-size: 25px;
+}
+.labelexep{
+    font-family: 'Quicksand', sans-serif;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    letter-spacing: 2px;
+}
+.submit{
+    width: 100%;
+    height: 80px;
+    border: none;
+    background-color: #F59121;
+    margin: 30px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    color: white;
+}
+.submit:focus, .submit:hover{
+    outline: none;
+    background-color: white;
+    color: #F59121;
+    border: 1px solid #F59121;
+}
+
+
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+PARTIE CSS DE CHAQUES GRILLES. C EST ICI QUE LA MISE EN PLACE (ALIGNEMENT, PADDING...) PEUT ETRE MODIFIE.
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+
+.label1, .label2, .label3, .label4, .label5, .label6, .label7, .label8, .label23,
+.label9, .label10, .label11, .label12, .label13, .label14, .label15, .label16, .label17,
+.label18, .label21, .label22{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.label19, .label20{
+    display: flex;
+    flex-direction: column;
+}
+.input{
+    border: 1px solid darkgrey;
+    width: auto;
+    height: 25px;
+    border-radius: 5px;
+}
+.input2{
+    border: 1px solid darkgrey;
+    width: auto;
+    height: 100px;
+    border-radius: 5px;
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+DISPOSITION SUR L ECRAN AVEC CSS GRID: POUR MODIFIER L EMPLACEMENT D UNE GRILLE MODIFIER LA PARTIE SI DESSOUS
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+
+.label1{grid-row-start: 2;grid-column-start: 1;grid-column-end: 1;}
+.label2{grid-row-start: 2;grid-column-start: 2;grid-column-end: 2;}
+.label3{grid-row-start: 2; grid-column-start: 3; grid-column-end: 3;}
+.label4{grid-row-start: 3; grid-column-start: 1; grid-column-end: 1;}
+.label23{grid-row-start: 3; grid-column-start: 2; grid-column-end: 3;}
+
+.label5{grid-column-start: 1;grid-column-end: 1;}
+.label6{grid-column-start: 2;grid-column-end: 2;}
+
+.label7{grid-column-start: 1;grid-column-end: 1;}
+.label8{grid-column-start: 2;grid-column-end: 2;}
+.label9{grid-row-start: 2;grid-column-start: 1;grid-column-end: 1;}
+.label10{grid-row-start: 4;grid-column-start: 1;grid-column-end: 1;}
+.label11{grid-row-start: 2;grid-column-start: 2;grid-column-end: 2;}
+.label12{grid-row-start: 3;grid-column-start: 2;grid-column-end: 2;}
+.label13{grid-row-start: 5;grid-column-start: 1;grid-column-end: 1;}
+.label14{grid-row-start: 5;grid-column-start: 2;grid-column-end: 2;}
+.label15{grid-row-start: 6;grid-column-start: 2;grid-column-end: 2;}
+.label16{grid-row-start: 3;grid-column-start: 1;grid-column-end: 1;}
+.label17{grid-row-start: 4;grid-column-start: 2;grid-column-end: 2;}
+.label18{grid-row-start: 6;grid-column-start: 1;grid-column-end: 1;}
+.label19{grid-row-start: 2;grid-column-start: 3;grid-column-end: 3; grid-row-start: 2; grid-row-end: 4;}
+.label20{grid-row-start: 5;grid-column-start: 3;grid-column-end: 4; grid-row-start: 5; grid-row-end: 7;}
+
+
+
+.label21{grid-column-start: 1;grid-column-end: 1;}
+.label22{grid-column-start: 2;grid-column-end: 2;}
+
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+

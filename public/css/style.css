@@ -5,40 +5,29 @@ body{
     padding: 0;
     margin: 0;
     overflow-x: hidden;
-}
-.background{
-    position: absolute;
-    width: 100%;
-    height: 60%;
     background-image: url("../images/back.jpg");
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
 }
 .navbar{
     position: fixed;
-    z-index: 1;
-    top: 0;
     width: 100%;
-    height: 100px;
-    background-color: rgba(0,0,0,0);
+    height: 80px;
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    background-color: rgba(0,0,0,0);
     transition: 0.3s ease-in-out;
     -webkit-transition: 0.6s ease-in-out;
     -moz-transition: 0.6s ease-in-out;
     -o-transition: 0.6s ease-in-out;
-}
+    z-index: 1;
 
+
+}
 .section{
     position: absolute;
     top: 60%;
     width: 100%;
-    height: 800px;
+    height: auto;
     background: rgb(222,227,227);
     background: -moz-radial-gradient(circle, rgba(222,227,227,1) 50%, rgba(249,252,252,1) 100%);
     background: -webkit-radial-gradient(circle, rgba(222,227,227,1) 50%, rgba(249,252,252,1) 100%);
@@ -46,17 +35,8 @@ body{
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dee3e3",endColorstr="#f9fcfc",GradientType=1);
 
 }
-.section2{
-    position: absolute;
-    top: 150%;
-    width: 100%;
-    height: 300px;
-    background-color: white;
-
-}
 .footer{
-    position: absolute;
-    top: 185%;
+    position: relative;
     width: 100%;
     height: 80px;
     background-color: rgba(0,0,0,0.8);
@@ -119,12 +99,25 @@ body{
 
 }
 .container{
-    position: relative;
-    top: 150px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    margin: 150px 0;
+}
+.container-2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: 0.3s ease-in-out;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    margin-top: 150px;
+    background-color: white;
+    padding: 50px 0;
 }
 
 .block{
@@ -172,6 +165,7 @@ body{
     font-family: 'Nunito', sans-serif;
     letter-spacing: 2px;
     font-size: 18px;
+    padding: 0 10px;
 }
 
 .container2{
@@ -239,3 +233,4 @@ body{
     -moz-box-shadow: 1px 1px 30px 0px rgba(245,145,33,0.72);
     box-shadow: 1px 1px 30px 0px rgba(245,145,33,0.72);
 }
+

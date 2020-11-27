@@ -8,13 +8,23 @@ Type d'input:
  - select multiple (style "multiselect.css" a part, regarder comment ca marche et ne pas modifier le nom des classes)
  --}}
 
+@include('layouts.navbar')
+<section class="block-content">
+    <div class="block-content2">
+    <h2 class="h2">Le spot</h2>
+    <p class="p">Merci de décrire le plus précisément possible le spot d'escalade. </p>
 <form enctype="multipart/form-data" id="bloc-form">
-    <div id="block1"> {{--    Chaque partie est separé en block    --}}
-        <span>Géo-localisation</span> {{--    Titre du block    --}}
-        <label for="site-name">{{ __('bloc-spot.bloc-form.site-name') }}</label> {{--    nom de l'input text    --}}
-        <input type="text" id="site-name" placeholder="{{ __('bloc-spot.bloc-form.site-name') }}"> {{--   input text     --}}
+    <div class="block1" id="block1"> {{--    Chaque partie est separé en block    --}}
+        <span class="geolocal"><i class="fas fa-map-marker-alt"></i> Géo-localisation :</span> {{--    Titre du block    --}}
+        <div class="label1">
+        <label class="label" for="site-name">{{ __('bloc-spot.bloc-form.site-name') }}</label> {{--    nom de l'input text    --}}
+        <input class="input" type="text" id="site-name" placeholder="{{ __('bloc-spot.bloc-form.site-name') }}"> {{--   input text     --}}
+        </div>
+        <div class="label23">
         <div>{{ __('bloc-spot.bloc-form.cliff-location') }}</div> {{--   Ici la map fait comme tu veux pour ca      --}}
-        <label for="recommended-site-for">{{ __('bloc-spot.bloc-form.recommended-site-for') }}</label> {{--   nom du select     --}}
+        </div>
+        <div class="label2">
+        <label class="label" for="recommended-site-for">{{ __('bloc-spot.bloc-form.recommended-site-for') }}</label> {{--   nom du select     --}}
         <select name="recommended-site-for" id="recommended-site-for" class="multi" multiple> {{--    Select multiple ATTENTION    --}}
             {{--  Pour changer le style des select multiple modifier le fichier "multiselect.css"     --}}
             <option value="">{{ __('bloc-spot.bloc-form.recommended-site-for') }}</option>
@@ -23,7 +33,9 @@ Type d'input:
             <option>Confirmés</option>
             <option>De haut niveau</option>
         </select>
-        <label for="exposure">{{ __('bloc-spot.bloc-form.exposure') }}</label>
+        </div>
+        <div class="label3">
+        <label class="label" for="exposure">{{ __('bloc-spot.bloc-form.exposure') }}</label>
         <select name="exposure" id="exposure" class="multi" multiple>
             <option value="">{{ __('bloc-spot.bloc-form.exposure') }}</option>
             <option value="">Toutes</option>
@@ -36,14 +48,18 @@ Type d'input:
             <option value="">W</option>
             <option value="">NW</option>
         </select>
-        <label for="near-city">{{ __('bloc-spot.bloc-form.near-city') }}</label>
-        <input type="text" id="near-city">
+        </div>
+        <div class="label4">
+        <label class="label" for="near-city">{{ __('bloc-spot.bloc-form.near-city') }}</label>
+        <input class="input" type="text" id="near-city">
+        </div>
     </div>
     <hr>
-    <div id="block2"> {{--    Autre block    --}}
-        <span>Marche d'approche</span> {{--   Titre du block     --}}
-        <label for="approach-method">{{ __('bloc-spot.bloc-form.approach-method') }}</label>
-        <select name="approach-method" id="approach-method"> {{--   Select pas multiple style different     --}}
+    <div class="block2" id="block2"> {{--    Autre block    --}}
+        <span class="approche"><i class="fas fa-walking"></i> Marche d'approche :</span> {{--   Titre du block     --}}
+        <div class="label5">
+        <label class="label" for="approach-method">{{ __('bloc-spot.bloc-form.approach-method') }}</label>
+        <select class="input" name="approach-method" id="approach-method"> {{--   Select pas multiple style different     --}}
             <option value="">En montée et descente raide</option>
             <option value="">En montée et descente facile</option>
             <option value="">En montée et descente</option>
@@ -57,33 +73,41 @@ Type d'input:
             <option value="">En descente</option>
             <option value="">Sur du plat</option>
         </select>
-        <label for="approach-time">{{ __('bloc-spot.bloc-form.approach-time') }}</label>
-        <input type="number" id="approach-time" min="0">
+        </div>
+        <div class="label6">
+        <label class="label" for="approach-time">{{ __('bloc-spot.bloc-form.approach-time') }}</label>
+        <input class="input" type="number" id="approach-time" min="0">
+        </div>
     </div>
     <hr>
-    <div id="block3">
-        <span>Alentours</span>
-        <label for="for-children">{{ __('bloc-spot.bloc-form.for-children') }}</label>
-        <select name="" id="for-children">
+    <div class="block3" id="block3">
+        <span class="alentours"><i class="fas fa-search-location"></i> Alentours</span>
+        <div class="label7">
+        <label class="label" for="for-children">{{ __('bloc-spot.bloc-form.for-children') }}</label>
+        <select class="input" name="" id="for-children">
             <option value="" selected>Détails non connus</option>
             <option value="">Confortable</option>
             <option value="">Correct</option>
             <option value="">Accidenté</option>
             <option value="">Dangereux</option>
         </select>
-        <label for="block-reception-quality">{{ __('bloc-spot.bloc-form.block-reception-quality') }}</label>
+        </div>
+        <div class="label8">
+        <label class="label" for="block-reception-quality">{{ __('bloc-spot.bloc-form.block-reception-quality') }}</label>
         <select name="" id="block-reception-quality" class="multi" multiple>
             <option value="">{{ __('bloc-spot.bloc-form.block-reception-quality') }}</option>
             <option value="">Sol plat</option>
             <option value="">Sol irrégulier ou en pente</option>
             <option value="">Sol chaotique</option>
         </select>
+        </div>
     </div>
     <hr>
-    <div id="block4">
-        <span>A propos de l'escalade</span>
-        <label for="climbing-type">{{ __('bloc-spot.bloc-form.climbing-type') }}</label>
-        <select name="" id="climbing-type">
+    <div class="block4" id="block4">
+        <span class="apropos"><i class="fas fa-info"></i> A propos de l'escalade</span>
+        <div class="label9">
+        <label class="label" for="climbing-type">{{ __('bloc-spot.bloc-form.climbing-type') }}</label>
+        <select class="input" name="" id="climbing-type">
             <option value="" selected>Détails non connus</option>
             <option value="">Bloc</option>
             <option value="">Voies d'une longueur</option>
@@ -92,8 +116,10 @@ Type d'input:
             <option value="">Bloc en salle</option>
             <option value="">Structure artificielle d'escalade</option>
         </select>
-        <label for="equipment-type">{{ __('bloc-spot.bloc-form.equipment-type') }}</label>
-        <select name="" id="equipment-type">
+        </div>
+        <div class="label10">
+        <label class="label" for="equipment-type">{{ __('bloc-spot.bloc-form.equipment-type') }}</label>
+        <select class="input" name="" id="equipment-type">
             <option value="" selected>Détails non connus</option>
             <option value="">Sportif</option>
             <option value="">Engagé</option>
@@ -101,13 +127,19 @@ Type d'input:
             <option value="">Moulinette</option>
             <option value="">Aucun</option>
         </select>
-        <label for="several-cliff">{{ __('bloc-spot.bloc-form.several-cliff') }}</label>
-        <input type="checkbox" id="several-cliff">
+        </div>
+        <div class="label11">
+        <label class="label" for="several-cliff">{{ __('bloc-spot.bloc-form.several-cliff') }}</label>
+        <input class="input" type="checkbox" id="several-cliff">
+        </div>
         <br>
-        <label for="max-height">{{ __('bloc-spot.bloc-form.max-height') }}</label>
-        <input type="number" id="max-height" step="0.01" min="0">
-        <label for="ways-number">{{ __('bloc-spot.bloc-form.ways-number') }}</label>
-        <select name="" id="ways-number">
+        <div class="label12">
+        <label class="label" for="max-height">{{ __('bloc-spot.bloc-form.max-height') }}</label>
+        <input class="input" type="number" id="max-height" step="0.01" min="0">
+        </div>
+        <div class="label13">
+        <label class="label" for="ways-number">{{ __('bloc-spot.bloc-form.ways-number') }}</label>
+        <select class="input" name="" id="ways-number">
             <option value="" selected>Détails non connus</option>
             <option value="">Moins de 25 voies</option>
             <option value="">Entre 25 et 50 voies</option>
@@ -119,9 +151,11 @@ Type d'input:
             <option value="">Entre 500 et 1000 voies</option>
             <option value="">Plus de 1000 voies</option>
         </select>
+        </div>
         <br>
-        <label for="quotation-min">{{ __('bloc-spot.bloc-form.quotation-min') }}</label>
-        <select name="" id="quotation-min">
+        <div class="label14">
+        <label class="label" for="quotation-min">{{ __('bloc-spot.bloc-form.quotation-min') }}</label>
+        <select class="input" name="" id="quotation-min">
             @for($i = 3; $i <= 8; $i++)
                 <option value="">{{ $i }}a</option>
                 <option value="">{{ $i }}a+</option>
@@ -131,8 +165,10 @@ Type d'input:
                 <option value="">{{ $i }}c+</option>
             @endfor
         </select>
-        <label for="quotation-max">{{ __('bloc-spot.bloc-form.quotation-max') }}</label>
-        <select name="" id="quotation-max">
+        </div>
+        <div class="label15">
+        <label class="label" for="quotation-max">{{ __('bloc-spot.bloc-form.quotation-max') }}</label>
+        <select class="input" name="" id="quotation-max">
             @for($i = 3; $i <= 8; $i++)
                 <option value="">{{ $i }}a</option>
                 <option value="">{{ $i }}a+</option>
@@ -142,7 +178,9 @@ Type d'input:
                 <option value="">{{ $i }}c+</option>
             @endfor
         </select>
-        <label for="rock">{{ __('bloc-spot.bloc-form.rock') }}</label>
+        </div>
+        <div class="label16">
+        <label class="label" for="rock">{{ __('bloc-spot.bloc-form.rock') }}</label>
         <select id="rock" class="multi" multiple>
             <option value="">Détails non connus</option>
             <option value="">Dolerite</option>
@@ -170,7 +208,9 @@ Type d'input:
             <option value="">Tuf</option>
             <option value="">Autre</option>
         </select>
-        <label for="profile">{{ __('bloc-spot.bloc-form.profile') }}</label>
+        </div>
+        <div class="label17">
+        <label class="label" for="profile">{{ __('bloc-spot.bloc-form.profile') }}</label>
         <select name="" id="profile" class="multi" multiple>
             <option value="">{{ __('bloc-spot.bloc-form.profile') }}</option>
             <option value="">Dalle</option>
@@ -179,7 +219,9 @@ Type d'input:
             <option value="">Surplomb</option>
             <option value="">Vertical</option>
         </select>
-        <label for="sockets-types">{{ __('bloc-spot.bloc-form.sockets-types') }}</label>
+        </div>
+        <div class="label18">
+        <label class="label" for="sockets-types">{{ __('bloc-spot.bloc-form.sockets-types') }}</label>
         <select name="" id="sockets-types" class="multi" multiple>
             <option value="">{{ __('bloc-spot.bloc-form.sockets-types') }}</option>
             <option value="">Aplats</option>
@@ -196,22 +238,38 @@ Type d'input:
             <option value="">Verticales</option>
             <option value="">Tafonis</option>
         </select>
-        <label for="restriction">{{ __('bloc-spot.bloc-form.restrictions') }}</label>
-        <textarea name="" id="restriction" cols="30" rows="5"></textarea>
-        <label for="miscellaneous-informations">{{ __('bloc-spot.bloc-form.miscellaneous-informations') }}</label>
-        <textarea name="" id="miscellaneous-informations" cols="30" rows="5"></textarea>
+        </div>
+        <div class="label19">
+        <label class="labelexep" for="restriction">{{ __('bloc-spot.bloc-form.restrictions') }}</label>
+        <textarea class="input2" name="" id="restriction" cols="30" rows="5"></textarea>
+        </div>
+        <div class="label20">
+        <label class="labelexep" for="miscellaneous-informations">{{ __('bloc-spot.bloc-form.miscellaneous-informations') }}</label>
+        <textarea class="input2" name="" id="miscellaneous-informations" cols="30" rows="5"></textarea>
+        </div>
     </div>
     <hr>
-    <div id="block5">
-        <label for="image-upload">{{ __('bloc-spot.bloc-form.image-upload') }}</label>
+    <div class="block5" id="block5">
+        <span class="apropos"><i class="fas fa-plus"></i> Détails</span>
+        <div class="label21">
+        <label class="label" for="image-upload">{{ __('bloc-spot.bloc-form.image-upload') }}</label>
         <input type="file" id="image-upload">
-        <label for="file-upload">{{ __('bloc-spot.bloc-form.file-upload') }}</label>
+        </div>
+        <div class="label22">
+        <label class="label" for="file-upload">{{ __('bloc-spot.bloc-form.file-upload') }}</label>
         <input type="file" id="file-upload">
+        </div>
     </div>
-    <button type="submit">Envoyer</button>
+    <button class="submit" type="submit"><span class="label-submit">Envoyer</span></button>
 </form>
+    </div>
+    @include('layouts.footer')
+</section>
 
 <script type="text/javascript" src="{{ asset('vendor/jildertmiedema/laravel-plupload/js/plupload.full.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/bloc-form.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/multiselect.min.js') }}"></script>
+<script src="https://kit.fontawesome.com/4c22a0d41e.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="{{ asset('css/multiselect.css') }}">
+<link rel="stylesheet" href="{{ asset('css/bloc-spot-create-form.css') }}">
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
