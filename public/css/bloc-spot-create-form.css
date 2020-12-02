@@ -124,16 +124,30 @@ PARTIE CSS DE CHAQUES GRILLES. C EST ICI QUE LA MISE EN PLACE (ALIGNEMENT, PADDI
     flex-direction: column;
 }
 .input{
-    border: 1px solid darkgrey;
+    overflow: hidden;
     width: auto;
-    height: 25px;
+    font-family: sans-serif;
+    /* border: 1px solid transparent; */
+    border: 1px solid rgba(0,0,0,.15);
+    background-color: #f8f9fa;
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    font-size: 1rem;
     border-radius: 5px;
+    cursor: pointer;
 }
 .input2{
-    border: 1px solid darkgrey;
+    overflow: hidden;
     width: auto;
+    font-family: sans-serif;
+    /* border: 1px solid transparent; */
+    border: 1px solid rgba(0,0,0,.15);
+    background-color: #f8f9fa;
     height: 100px;
+    line-height: 1.5;
+    font-size: 1rem;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
