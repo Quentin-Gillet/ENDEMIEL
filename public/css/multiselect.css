@@ -56,15 +56,17 @@
     overflow: hidden;
 }
 .multi__dropdown {
-    font-family: sans-serif;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: .25rem;
+    overflow: hidden;
     position: absolute;
     width: auto;
-    padding: 5px 30px 5px 10px;
-    margin: 2px 0;
+    font-family: sans-serif;
+    /* border: 1px solid transparent; */
+    border: 1px solid rgba(0,0,0,.15);
+    background-color: #f8f9fa;
+    padding: .375rem .75rem;
+    line-height: 1.5;
     font-size: 1rem;
-    background-color: #dae0e5;
+    border-radius: 5px;
     z-index: 1;
 }
 .multi__dropdown ul {

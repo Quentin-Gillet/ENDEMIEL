@@ -3,7 +3,7 @@ body{
 }
 .block-content{
     position: absolute;
-    top: 40%;
+    top: 60%;
     width: 100%;
     height: auto;
     background: rgb(222,227,227);
@@ -42,18 +42,25 @@ body{
     grid-template-rows: 50px 50px 50px;
     grid-gap: 25px 25px;
     padding-bottom: 30px;
+    grid-template-areas: "title title title"
+    "name recommended proximity"
+    "exposition localisation .";
 }
 .block2{
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding-bottom: 30px;
     grid-gap: 25px 25px;
+    grid-template-areas: "approach approach"
+    "method time";
 }
 .block3{
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding-bottom: 30px;
     grid-gap: 25px 25px;
+    grid-template-areas: "main_title3 main_title3"
+    "children quality";
 }
 .block4{
     display: grid;
@@ -61,12 +68,19 @@ body{
     grid-template-rows: 50px 50px  50px 50px 50px 50px;
     grid-gap: 25px 25px;
     padding-bottom: 30px;
+    grid-template-areas: "main_title4 main_title4 main_title4"
+    "type cliff restriction"
+    "rock max_height restriction"
+    "equipement profile ."
+    "way min_quotation information"
+    "taken max_quotation information";
 }
 .block5{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 25px 25px;
     padding-bottom: 30px;
+    grid-template-areas: "main_title4 main_title4"
+    "picture topos";
 }
 .label{
     font-family: 'Quicksand', sans-serif;
@@ -102,6 +116,48 @@ body{
     color: #F59121;
     border: 1px solid #F59121;
 }
+.file{
+    display: none;
+}
+.button_upload, .map_button{
+    background-color: #F59121;
+    border: 1px solid #F59121;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    padding: 10px 10px;
+    font-family: 'Quicksand', sans-serif;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    color: white;
+}
+.button_upload:hover, .map_button:hover{
+    background-color: white;
+    color: #F59121;
+}
+.map_button{
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+.popup_map{
+    width: 1000px;
+    height: 0;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+    transition: 0.5s ease-in-out;
+}
+.icon_close{
+    display: none;
+    justify-content: flex-end;
+    padding: 10px 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
 
 
 
@@ -124,6 +180,7 @@ PARTIE CSS DE CHAQUES GRILLES. C EST ICI QUE LA MISE EN PLACE (ALIGNEMENT, PADDI
     flex-direction: column;
 }
 .input{
+
     overflow: hidden;
     width: auto;
     font-family: sans-serif;
@@ -163,38 +220,134 @@ DISPOSITION SUR L ECRAN AVEC CSS GRID: POUR MODIFIER L EMPLACEMENT D UNE GRILLE 
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 
 
-.label1{grid-row-start: 2;grid-column-start: 1;grid-column-end: 1;}
-.label2{grid-row-start: 2;grid-column-start: 2;grid-column-end: 2;}
-.label3{grid-row-start: 2; grid-column-start: 3; grid-column-end: 3;}
-.label4{grid-row-start: 3; grid-column-start: 1; grid-column-end: 1;}
-.label23{grid-row-start: 3; grid-column-start: 2; grid-column-end: 3;}
-
-.label5{grid-column-start: 1;grid-column-end: 1;}
-.label6{grid-column-start: 2;grid-column-end: 2;}
-
-.label7{grid-column-start: 1;grid-column-end: 1;}
-.label8{grid-column-start: 2;grid-column-end: 2;}
-.label9{grid-row-start: 2;grid-column-start: 1;grid-column-end: 1;}
-.label10{grid-row-start: 4;grid-column-start: 1;grid-column-end: 1;}
-.label11{grid-row-start: 2;grid-column-start: 2;grid-column-end: 2;}
-.label12{grid-row-start: 3;grid-column-start: 2;grid-column-end: 2;}
-.label13{grid-row-start: 5;grid-column-start: 1;grid-column-end: 1;}
-.label14{grid-row-start: 5;grid-column-start: 2;grid-column-end: 2;}
-.label15{grid-row-start: 6;grid-column-start: 2;grid-column-end: 2;}
-.label16{grid-row-start: 3;grid-column-start: 1;grid-column-end: 1;}
-.label17{grid-row-start: 4;grid-column-start: 2;grid-column-end: 2;}
-.label18{grid-row-start: 6;grid-column-start: 1;grid-column-end: 1;}
-.label19{grid-row-start: 2;grid-column-start: 3;grid-column-end: 3; grid-row-start: 2; grid-row-end: 4;}
-.label20{grid-row-start: 5;grid-column-start: 3;grid-column-end: 4; grid-row-start: 5; grid-row-end: 7;}
+.label1{grid-area: name;}
+.label2{grid-area: recommended;}
+.label3{grid-area: exposition;}
+.label4{grid-area: proximity;}
+.label23{grid-area: localisation;}
+.geolocal{grid-area: title;}
 
 
+.label5{grid-area: method}
+.label6{grid-area: time}
+.approche{grid-area: approach}
 
-.label21{grid-column-start: 1;grid-column-end: 1;}
-.label22{grid-column-start: 2;grid-column-end: 2;}
+.label7{grid-area: children}
+.label8{grid-area: quality}
+.alentours{grid-area: main_title3}
+
+.label9{grid-area: type;}
+.label10{grid-area: equipement;}
+.label11{grid-area: cliff;}
+.label12{grid-area: max_height;}
+.label13{grid-area: way;}
+.label14{grid-area: min_quotation;}
+.label15{grid-area: max_quotation;}
+.label16{grid-area: rock;}
+.label17{grid-area: profile;}
+.label18{grid-area: taken;}
+.label19{grid-area: restriction;}
+.label20{grid-area: information;}
+.apropos{grid-area: main_title4}
+
+
+.label21{grid-area: picture;}
+.label22{grid-area: topos;}
 
 
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 
+
+/*RESPONSIVE DESIGN /*/
+
+@media screen and (max-width: 1600px) {
+    .block1{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 50px 50px 50px 50px;
+        grid-gap: 25px 25px;
+        padding-bottom: 30px;
+        grid-template-areas: "title title"
+        "name recommended"
+        "proximity exposition"
+        "localisation .";
+    }
+}
+@media screen and (max-width: 1500px){
+    .block4{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 50px 50px  50px 50px 50px 50px 150px;
+        grid-gap: 25px 25px;
+        padding-bottom: 30px;
+        grid-template-areas: "main_title4 main_title4"
+        "type cliff"
+        "rock max_height"
+        "equipement profile"
+        "way min_quotation"
+        "taken max_quotation"
+        "restriction information";
+    }
+    .block5{
+        grid-template-columns: 1fr;
+        grid-template-rows: 75px 75px;
+        padding-bottom: 30px;
+        grid-template-areas: "main_title4"
+        "picture"
+        "topos";
+    }
+}
+@media screen and (max-width: 1000px){
+    .block1{
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px 50px 50px 50px 50px 50px;
+        grid-template-areas: "title"
+        "name"
+        "recommended"
+        "proximity"
+        "exposition"
+        "localisation";
+    }
+    .block2{
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px 50px 50px;
+        grid-template-areas: "title"
+        "approach"
+        "method"
+        "time";
+    }
+    .block3{
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px 50px 50px;
+        grid-template-areas: "main_title3"
+        "children"
+        "quality";
+
+    }
+    .block4{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(11,50px) 150px 150px;
+        grid-template-areas: "main_title4 "
+        "type"
+        "rock"
+        "equipement"
+        "way"
+        "taken"
+        "cliff"
+        "max_height"
+        "profile"
+        "min_quotation"
+        "max_quotation"
+        "information"
+        "restriction";
+    }
+    .block5{
+        grid-template-columns: 1fr;
+        grid-template-rows: 75px 75px;
+        grid-template-areas: "main_title4"
+        "picture"
+        "topos";
+    }
+
+}
 
