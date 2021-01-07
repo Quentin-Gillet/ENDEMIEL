@@ -1,9 +1,6 @@
 var allFiles = [];
 
-function popup_quit() {
-    document.querySelector('.popup').style.display = 'none';
-    document.body.style.overflow="initial";
-}
+
 
 var googleMapScript = document.createElement('script');
 googleMapScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCLOBBi470XIAX1gnetthnSwET6XtorLEM&callback=initMap&language=fr';
@@ -99,8 +96,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.open(map);
 }*/
 
-document.querySelector('#bloc-form').addEventListener('submit', function(e){
-    console.log('submit')
+document.querySelector('#bloc-form').addEventListener('submit', function (e) {
     e.preventDefault();
     /*if (checkInputEmpty()){
         return;
@@ -108,6 +104,11 @@ document.querySelector('#bloc-form').addEventListener('submit', function(e){
     current_uploader.start();*/
 });
 
+function force_submit() {
+    document.querySelector('#bloc-form').submit();
+}
+
+/*
 var current_uploader = new plupload.Uploader({
     "runtimes": "html5",
     "browse_button": "browse-button",
@@ -138,6 +139,7 @@ var current_uploader = new plupload.Uploader({
         }
     }
 });
+*/
 current_uploader.init();
 
 function checkInputEmpty() {

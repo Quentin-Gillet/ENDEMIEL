@@ -22,7 +22,7 @@ return [
         'profile' => 'Profil',
         'sockets-types' => 'Types de prises',
         'restrictions' => 'Restrictions',
-        'miscellaneous-informations' => 'Informations diverses',
+        'miscellaneous-information' => 'Informations diverses',
         'image-upload' => 'Ajoutez vos images du spot (jpg, png, jpeg)',
         'file-upload' => 'Ajoutez vos topos sur du site (pdf seulement)',
     ]
