@@ -181,7 +181,6 @@ PARTIE CSS DE CHAQUES GRILLES. C EST ICI QUE LA MISE EN PLACE (ALIGNEMENT, PADDI
 .input{
     overflow: hidden;
     width: auto;
-    font-family: sans-serif;
     /* border: 1px solid transparent; */
     border: 1px solid rgba(0,0,0,.15);
     background-color: #f8f9fa;
@@ -190,6 +189,8 @@ PARTIE CSS DE CHAQUES GRILLES. C EST ICI QUE LA MISE EN PLACE (ALIGNEMENT, PADDI
     font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
+    color: grey;
+    font-family: 'Quicksand', sans-serif;
 }
 .input2{
     overflow: hidden;

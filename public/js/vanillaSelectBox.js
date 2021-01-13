@@ -1,7 +1,6 @@
 /*
 Copyright (C) Philippe Meyer 2019-2020
 Distributed under the MIT License
-
 vanillaSelectBox : v0.56 : The multiselect checkboxes are a little smaller, maxWidth option is now working + added minWidth option as well
                            The button has now a style attribute to protect its appearance
 vanillaSelectBox : v0.55 : All attributes from the original select options are copied to the selectBox element
@@ -459,7 +458,6 @@ function vanillaSelectBox(domSelector, options) {
             if (className && className.indexOf("disabled") != -1) {
                 return;
             }
-
             if (choiceValue === 'all') {
                 if (e.target.hasAttribute('data-selected')
                     && e.target.getAttribute('data-selected') === 'true') {
@@ -711,6 +709,7 @@ vanillaSelectBox.prototype.setValue = function (values) {
                         selectedTexts = nrActives + " " + wordForItems;
                     }
                 }
+                if (selectedTexts == null || selectedTexts == "") selectedTexts = self.userOptions.placeHolder;
                 self.title.textContent = selectedTexts;
                 self.privateSendChange();
             }

@@ -16,23 +16,15 @@
         </div>
     @endif
     <section>
-        <div class="main_container">
-            <div class="container_left">
-                <h2 class="title_login">Titre/logo</h2>
-                <form action="{{ route('login') }}" method="POST" class="form">
-                    @csrf
-                    <div class="subcontainer_login">
-                        <input type="email" class="input" placeholder="E-mail" name="email"><br>
-                        <input type="password" class="input" placeholder="Mot de passe" name="password"><br>
-                        <button class="button" type="submit">Se connecter</button>
-                    </div>
-                </form>
-            </div>
-            <div class="container_right">
-                <h2 class="title_account">Tu n'as pas de compte ?</h2>
-                <br>
-                <a class="button" href="{{ route('register') }}">S'enregistrer</a>
-            </div>
+        <div class="container">
+            <h1 class="title">Se connecter</h1>
+            <form class="form">
+                <input class="input" type="email" placeholder="&#xf1fa   Email">
+                <input class="input" type="password" placeholder="&#xf084   Mot de passe">
+                <label class="checkbox"><input class="check" type="checkbox"> Se souvenir de moi</label><br>
+                <input class="submit" type="submit" value="Se connecter">
+                <input class="submit2" type="submit" value="S'enregistrer">
+            </form>
         </div>
     </section>
 </body>

@@ -53,11 +53,10 @@ Type d'input:
                     <label class="label" for="near-city">{{ __('bloc-spot.bloc-form.near-city') }}</label>
                     <input class="input" name="near-city" type="text" id="near-city">
                 </div>
-            </div>
-            <div class="label23">
-                <div
-                    class="label">{{ __('bloc-spot.bloc-form.cliff-location') }}</div> {{--   Ici la map fait comme tu veux pour ca      --}}
-                <button class="map_button" id="">Ajouter</button> {{--   button     --}}
+                <div class="label23">
+                    <div class="label">{{ __('bloc-spot.bloc-form.cliff-location') }}</div> {{--   Ici la map fait comme tu veux pour ca      --}}
+                    <button class="map_button">Ajouter</button> {{--   button     --}}
+                </div>
             </div>
             <div class="popup_map">
                 <span class="icon_close" title="Fermer"><i class="far fa-times-circle"></i></span>
