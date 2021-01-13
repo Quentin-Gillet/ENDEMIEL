@@ -160,7 +160,6 @@ body{
 }
 
 
-
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 PARTIE CSS DE CHAQUES GRILLES. C EST ICI QUE LA MISE EN PLACE (ALIGNEMENT, PADDING...) PEUT ETRE MODIFIE.
@@ -180,7 +179,6 @@ PARTIE CSS DE CHAQUES GRILLES. C EST ICI QUE LA MISE EN PLACE (ALIGNEMENT, PADDI
     flex-direction: column;
 }
 .input{
-
     overflow: hidden;
     width: auto;
     font-family: sans-serif;
