@@ -459,7 +459,6 @@ function vanillaSelectBox(domSelector, options) {
             if (className && className.indexOf("disabled") != -1) {
                 return;
             }
-
             if (choiceValue === 'all') {
                 if (e.target.hasAttribute('data-selected')
                     && e.target.getAttribute('data-selected') === 'true') {
@@ -711,6 +710,7 @@ vanillaSelectBox.prototype.setValue = function (values) {
                         selectedTexts = nrActives + " " + wordForItems;
                     }
                 }
+                if (selectedTexts == null || selectedTexts == "") selectedTexts = self.userOptions.placeHolder;
                 self.title.textContent = selectedTexts;
                 self.privateSendChange();
             }
