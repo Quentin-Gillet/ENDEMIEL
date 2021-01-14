@@ -133,7 +133,6 @@ function vanillaSelectBox(domSelector, options) {
                 {"key": "border-radius", "value": "5px"},
                 {"key": "width", "value": "100%"},
                 {"key": "text-align", "value": "left"},
-                {"key": "z-index", "value": "1"},
                 {"key": "color", "value": "#333"},
                 {"key": "background", "value": "#f8f9fa !important"},
                 {"key": "border", "value": "1px solid rgba(0,0,0,.15) !important"},
@@ -205,7 +204,7 @@ function vanillaSelectBox(domSelector, options) {
         this.drop = document.createElement("div");
         this.main.appendChild(this.drop);
         this.drop.classList.add("vsb-menu");
-        this.drop.style.zIndex = 2000 - this.instanceOffset;
+        this.drop.style.zIndex = 1 - this.instanceOffset;
         this.ul = document.createElement("ul");
         this.drop.appendChild(this.ul);
 
