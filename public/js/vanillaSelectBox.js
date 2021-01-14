@@ -130,13 +130,13 @@ function vanillaSelectBox(domSelector, options) {
         if (selector === ".vsb-main button") {
             cssArray = [
                 {"key": "min-width", "value": "120px"},
-                {"key": "border-radius", "value": "0"},
+                {"key": "border-radius", "value": "5px"},
                 {"key": "width", "value": "100%"},
                 {"key": "text-align", "value": "left"},
                 {"key": "z-index", "value": "1"},
                 {"key": "color", "value": "#333"},
-                {"key": "background", "value": "white !important"},
-                {"key": "border", "value": "1px solid #999 !important"},
+                {"key": "background", "value": "#f8f9fa !important"},
+                {"key": "border", "value": "1px solid rgba(0,0,0,.15) !important"},
                 {"key": "line-height", "value": "20px"},
                 {"key": "font-size", "value": "14px"},
                 {"key": "padding", "value": "6px 12px"}
