@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\BlocSpotRequest;
 use App\Models\BlocSpot;
 use Illuminate\Http\Request;
 
@@ -28,29 +29,30 @@ class BlocSpotController extends Controller
         return view('bloc-spot.index', ['action' => 'create']);
     }
 
-    public function store(Request $request)
+    public function store(BlocSpotRequest $request)
     {
-        return $request;
-        /*$validated = $request->validated();
+        $inputToJson = [];
+        foreach ($request->all() as $key => $value) {
+            if ($key == 'site-name' || $key == 'lat' || $key == 'lng' || $key == 'file_id' || $key == '_token' || $key == '_method') continue;
+            $inputToJson[$key] = $value;
+        }
 
-        $validated['accept_status'] = 'approved'; //TODO REMOVE FOR PRODUCTION
-        $validated['region'] = 'PACA'; //TODO REMOVE FOR PRODUCTION
-        $blocSpot = BlocSpot::create($validated);
-        $file = File::where('file_upload_id', '=', $validated['file_upload_id'])->first();
+        $dataToSave = [
+            'lat' => $request->get('lat'),
+            'lng' => $request->get('lng'),
+            'site-name' => $request->get('site-name'),
+            'data' => json_encode($inputToJson),
+            'accept_status' => 'validated',
+        ];
+
+        $blocSpot = BlocSpot::create($dataToSave);
+        /*$file = File::where('file_upload_id', '=', $validated['file_upload_id'])->first();
         $blocSpot->files()->save($file);
 
         if ($user = auth()->user()){
             $user->blocSpot()->save($blocSpot);
-        }
-        return redirect()->route('index')->with('success', 'Nouveau spot ajouter et en attente de vérification.');*/
-    }
-
-    public function search($value){
-        return BlocSpot::where('id', '=', $value)
-                        ->orWhere('name', 'like', $value)
-                        ->orWhere('lat', 'like', $value)
-                        ->orWhere('description', 'like', $value)
-                        ->orWhere('lng', 'like', $value)->first();
+        }*/
+        return redirect()->route('index')->with('success', 'Nouveau spot ajouter et en attente de vérification.');
     }
 
 }

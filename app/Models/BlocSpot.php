@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use function PHPUnit\Framework\isEmpty;
 
 class BlocSpot extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'lat', 'lng', 'place_name', 'place_description',
-        'type', 'accessibility', 'difficulty', 'ways',
-        'region', 'accept_status', 'author_id',
+        'lat', 'lng', 'site-name', 'data', 'accept_status', 'author_id',
     ];
 
     public function isApproved(){

@@ -2,15 +2,15 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 400px;
     height: 400px;
-    background-color: rgba(255,255,255,1);
-    z-index: 1;
+    background-color: rgba(255, 0, 0, 1);
+    z-index: 200;
     border-radius: 50px;
-    -webkit-box-shadow: 1px 1px 59px 1px rgba(255,255,255,1);
-    -moz-box-shadow: 1px 1px 59px 1px rgba(255,255,255,1);
-    box-shadow: 1px 1px 59px 1px rgba(255,255,255,1);
+    -webkit-box-shadow: 1px 1px 59px 1px rgba(255, 255, 255, 1);
+    -moz-box-shadow: 1px 1px 59px 1px rgba(255, 255, 255, 1);
+    box-shadow: 1px 1px 59px 1px rgba(255, 255, 255, 1);
 }
 .icon_success{
     opacity: 1;

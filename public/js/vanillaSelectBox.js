@@ -58,6 +58,7 @@ function vanillaSelectBox(domSelector, options) {
     this.drop;
     this.top;
     this.left;
+    this.isOpen;
     this.options;
     this.listElements;
     this.isDisabled = false;
@@ -204,7 +205,7 @@ function vanillaSelectBox(domSelector, options) {
         this.drop = document.createElement("div");
         this.main.appendChild(this.drop);
         this.drop.classList.add("vsb-menu");
-        this.drop.style.zIndex = 1 - this.instanceOffset;
+        this.drop.style.zIndex = 10 - this.instanceOffset;
         this.ul = document.createElement("ul");
         this.drop.appendChild(this.ul);
 
@@ -431,6 +432,11 @@ function vanillaSelectBox(domSelector, options) {
         } else {
             this.main.addEventListener("click", function (e) {
                 if (self.isDisabled) return;
+                if (self.isOpen) {
+                    self.isOpen = false;
+                    return;
+                }
+                self.isOpen = true;
                 self.drop.style.left = self.left + "px";
                 self.drop.style.top = self.top + "px";
                 self.drop.style.display = "block";

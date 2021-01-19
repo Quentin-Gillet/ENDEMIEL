@@ -29,14 +29,27 @@ class BlocSpotRequest extends FormRequest
         return [
             'lat' => 'required|numeric',
             'lng' => 'required|numeric',
-            'place_name' => 'required|max:255',
-            'place_description' => 'required',
-            'type' => 'required|exists:bloc_spot_types,value',
-            'accessibility' => 'required|exists:bloc_spot_accessibility,value',
-            'difficulty' => 'required|exists:bloc_spot_difficulties,value',
-            'ways' => 'required|numeric',
-            'file_upload_id' => 'required',
-            //'region' => 'required',
+            'site-name' => 'required|max:255',
+            'recommend-site-for' => 'required|array',
+            'exposure' => 'required|array',
+            'near-city' => 'required|max:255',
+            'approach-method' => 'required|numeric',
+            'approach-time' => 'required|numeric',
+            'for-children' => 'required',
+            'block-reception-quality' => 'required|array',
+            'climbing-type' => 'required',
+            'equipment-type' => 'required',
+            'several-cliff' => 'required|boolean',
+            'max-height' => 'required|numeric',
+            'ways-number' => 'required',
+            'quotation-min' => 'required',
+            'quotation-max' => 'required',
+            'rock' => 'required|array',
+            'profile' => 'required|array',
+            'sockets-type' => 'required|array',
+            'restriction' => 'required',
+            'miscellaneous-information' => 'required',
+            //'file_upload_id' => 'required',
         ];
     }
 
@@ -45,18 +58,8 @@ class BlocSpotRequest extends FormRequest
         return [
             'lat.required' => "Nous avons besoin de la latitude.",
             'lng.required' => 'Nous avons besoin de la longitude.',
-            'place_name.required' => 'Le site doit avoir un nom.',
-            'place_name.max' => 'Le nom du site ne peut faire maximum 255 caractères.',
-            'place_description.required' => 'Le site doit avoir une description.',
-            'ways.required' => 'Le spot doit avoir au moins une voie.',
-            'ways.numeric' => 'Le nombre doit être valide',
-            'type.required' => 'Erreur, réessayez.',
-            'type.exist' => 'Erreur, réessayez.',
-            'accessibility.required' => 'Erreur, réessayez.',
-            'accessibility.exist' => 'Erreur, réessayez.',
-            'difficulty.required' => 'Erreur, réessayez.',
-            'difficulty.exist' => 'Erreur, réessayez.',
-            'file_upload_id.required' => 'Impossible de trouver le fichier ajouté. Veuillez réessayer.',
+            'site-name.required' => 'Le site doit avoir un nom.',
+            'site-name.max' => 'Le nom du site ne peut faire maximum 255 caractères.',
         ];
     }
 
@@ -67,6 +70,7 @@ class BlocSpotRequest extends FormRequest
      */
     protected function failedValidation(Validator $validator)
     {
+        return;
         if ($validator->fails()){
             $file = File::where('file_upload_id', $this->request->get('file_upload_id'))->first();
             Storage::delete($file->url);

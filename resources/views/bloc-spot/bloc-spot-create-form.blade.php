@@ -21,10 +21,8 @@ Type d'input:
                 <span class="geolocal"><i
                         class="fas fa-map-marker-alt"></i> Géo-localisation :</span> {{--    Titre du block    --}}
                 <div class="label1">
-                    <label class="label"
-                           for="site-name">{{ __('bloc-spot.bloc-form.site-name') }}</label> {{--    nom de l'input text    --}}
-                    <input name="site-name" class="input" type="text" id="site-name"
-                           placeholder="{{ __('bloc-spot.bloc-form.site-name') }}"> {{--   input text     --}}
+                    <label class="label" for="site-name">{{ __('bloc-spot.bloc-form.site-name') }}</label> {{--    nom de l'input text    --}}
+                    <input name="site-name" class="input" type="text" id="site-name" placeholder="{{ __('bloc-spot.bloc-form.site-name') }}"> {{--   input text     --}}
                 </div>
                 <div class="label2">
                     <label class="label" for="recommended-site-for">{{ __('bloc-spot.bloc-form.recommended-site-for') }}</label> {{--   nom du select     --}}
@@ -51,7 +49,7 @@ Type d'input:
                 </div>
                 <div class="label4">
                     <label class="label" for="near-city">{{ __('bloc-spot.bloc-form.near-city') }}</label>
-                    <input class="input" name="near-city" type="text" id="near-city">
+                    <input class="input" name="near-city" type="text" id="near-city" placeholder="{{ __('bloc-spot.bloc-form.near-city') }}">
                 </div>
                 <div class="label23">
                     <div class="label">{{ __('bloc-spot.bloc-form.cliff-location') }}</div> {{--   Ici la map fait comme tu veux pour ca      --}}
@@ -251,8 +249,7 @@ Type d'input:
                     <textarea class="input2" name="restriction" id="restriction" cols="30" rows="5"></textarea>
                 </div>
                 <div class="label20">
-                    <label class="labelexep"
-                           for="miscellaneous-information">{{ __('bloc-spot.bloc-form.miscellaneous-information') }}</label>
+                    <label class="labelexep" for="miscellaneous-information">{{ __('bloc-spot.bloc-form.miscellaneous-information') }}</label>
                     <textarea class="input2" name="miscellaneous-information" id="miscellaneous-information" cols="30" rows="5"></textarea>
                 </div>
             </div>
@@ -272,6 +269,8 @@ Type d'input:
                     </label>
                 </div>
             </div>
+            <input type="hidden" name="lat" value="0">
+            <input type="hidden" name="lng" value="0">
             <button class="submit" type="submit" onclick="force_submit()"><span class="label-submit">Envoyer</span></button>
         </form>
     </div>
@@ -282,7 +281,7 @@ Type d'input:
     document.addEventListener('DOMContentLoaded', function (event) {
         //setup all multiselect
         const maxWidth = 300;
-        const maxHeight = 135;
+        const maxHeight = 250;
         const minWidth = 200;
 
         new vanillaSelectBox("#recommended-site-for", {search: false, maxWidth: maxWidth, maxHeight: maxHeight, minWidth: minWidth, placeHolder: "{{ __('bloc-spot.bloc-form.recommended-site-for') }}"});
@@ -294,12 +293,12 @@ Type d'input:
     });
 </script>
 
+<link rel="stylesheet" href="{{ asset('css/vanillaSelectBox.css') }}">
 <script type="text/javascript" src="{{ asset('vendor/jildertmiedema/laravel-plupload/js/plupload.full.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/bloc-form.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/vanillaSelectBox.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/navbar-script.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/popup_map.js') }}"></script>
 <script src="https://kit.fontawesome.com/4c22a0d41e.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="{{ asset('css/vanillaSelectBox.css') }}">
 <link rel="stylesheet" href="{{ asset('css/bloc-spot-create-form.css') }}">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
