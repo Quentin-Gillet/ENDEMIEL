@@ -1,17 +1,45 @@
-const close_button = document.querySelector(".icon_close");
-close_button.addEventListener('click',()=>{
-    document.querySelector(".popup_map").style.height = '0px';
-    document.querySelector(".popup_map").style.border = 'none';
-    close_button.style.display = "none";
+window.addEventListener('load', ()=>{
 
+    for (let k = 1; k < 5; k++){
+        document.querySelector('.label' + k).style.transition = '0.4s';
+        setTimeout(function () {
+            document.querySelector('.label' + k).style.opacity = '1';
+        },150 * k);
+    }
 });
 
-const open_popup = document.querySelector(".map_button");
-open_popup.addEventListener('click',(e)=>{
-    document.querySelector(".popup_map").style.height = "500px";
-    setTimeout(function () {
-        document.querySelector(".popup_map").style.border = '2px solid #F59121';
-        close_button.style.display = "flex";
-    },300);
-    window.scrollTo(0,500);
+window.addEventListener('scroll',()=>{
+    if (window.scrollY > 800){
+        for (let k = 5; k < 7; k++){
+            document.querySelector('.label' + k).style.transition = '0.4s';
+            setTimeout(function () {
+                document.querySelector('.label' + k).style.opacity = '1';
+            },100 * k);
+        }
+    }
+    if (window.scrollY > 1000){
+        for (let k = 7; k < 9; k++){
+            document.querySelector('.label' + k).style.transition = '0.4s';
+            setTimeout(function () {
+                document.querySelector('.label' + k).style.opacity = '1';
+            },100 * k);
+        }
+    }
+    if (window.scrollY > 1300){
+        for (let k = 9; k < 21; k++){
+            document.querySelector('.label' + k).style.transition = '0.4s';
+            setTimeout(function () {
+                document.querySelector('.label' + k).style.opacity = '1';
+            },50 * k);
+        }
+    }
+    if (window.scrollY > 1600){
+        for (let k = 21; k < 23; k++){
+            document.querySelector('.label' + k).style.transition = '0.4s';
+            setTimeout(function () {
+                document.querySelector('.label' + k).style.opacity = '1';
+            },50 * k);
+        }
+    }
 });
+

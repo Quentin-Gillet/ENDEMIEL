@@ -9,7 +9,6 @@ Type d'input:
  --}}
 
 @include('layouts.navbar')
-
 <section class="block-content">
     <div class="block-content2">
         <h2 class="h2">Le spot</h2>
@@ -52,13 +51,13 @@ Type d'input:
                     <input class="input" name="near-city" type="text" id="near-city" placeholder="{{ __('bloc-spot.bloc-form.near-city') }}">
                 </div>
                 <div class="label23">
-                    <div class="label">{{ __('bloc-spot.bloc-form.cliff-location') }}</div> {{--   Ici la map fait comme tu veux pour ca      --}}
-                    <button class="map_button">Ajouter</button> {{--   button     --}}
+                    <div class="label">{{ __('bloc-spot.bloc-form.cliff-location') }} :</div> {{--   juste le label      --}}
                 </div>
+                {{--   Ici la map fait comme tu veux pour ca      --}}
+                <div class="label24"><iframe class="iframe_map" width="500" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=bouc%20bel%20air&t=&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>{{--   Ici mettre la carte--}}
+                {{--   Valid Button      --}}
+                <div class="label25"><button class="valid_button">Valider</button></div>
             </div>
-            <div class="popup_map">
-                <span class="icon_close" title="Fermer"><i class="far fa-times-circle"></i></span>
-            </div> {{-- popup_map --}}
             <hr>
             <div class="block2" id="block2">
                 <span class="approche"><i class="fas fa-walking"></i> Marche d'approche :</span>
@@ -276,7 +275,6 @@ Type d'input:
     </div>
     @include('layouts.footer')
 </section>
-
 <script>
     document.addEventListener('DOMContentLoaded', function (event) {
         //setup all multiselect

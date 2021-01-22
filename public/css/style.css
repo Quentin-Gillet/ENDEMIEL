@@ -48,11 +48,11 @@ body{
 }
 .link{
     display: flex;
+    gap: 80px;
     list-style-type: none;
     color: white;
 }
 .sublink{
-    padding: 50px;
     font-family: 'Nunito', sans-serif;
     text-transform: uppercase;
     cursor: pointer;

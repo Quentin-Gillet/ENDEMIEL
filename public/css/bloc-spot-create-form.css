@@ -1,3 +1,9 @@
+/* Initialisation de toutes les variables */
+:root{
+    --orange: #F59121;
+    --radius_5: 5px;
+}
+
 body{
     padding: 0;margin: 0;
 }
@@ -36,15 +42,26 @@ body{
 .p{
     font-family: 'Quicksand', sans-serif;
 }
+
 .block1{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 50px 50px 50px;
+    grid-template-rows: repeat(13, 50px);
     grid-gap: 25px 25px;
     padding-bottom: 30px;
     grid-template-areas: "title title title"
     "name recommended proximity"
-    "exposition localisation .";
+    "exposition . ."
+    "localisation . ."
+    "map map map"
+    "map map map"
+    "map map map"
+    "map map map"
+    "map map map"
+    "map map map"
+    "map map map"
+    "map map map"
+    ". valid .";
 }
 .block2{
     display: grid;
@@ -119,46 +136,31 @@ body{
 .file{
     display: none;
 }
-.button_upload, .map_button{
-    background-color: #F59121;
+
+/* All buttons */
+.button_upload, .valid_button{
+    background-color: var(--orange);
     border: 1px solid #F59121;
     letter-spacing: 1px;
-    border-radius: 5px;
+    border-radius: var(--radius_5);
     padding: 10px 10px;
     font-family: 'Quicksand', sans-serif;
     transition: 0.3s ease-in-out;
     cursor: pointer;
     color: white;
+    font-size: 16px;
 }
-.button_upload:hover, .map_button:hover{
+.button_upload:hover, .valid_button:hover{
     background-color: white;
     color: #F59121;
 }
-.map_button{
-    font-size: 16px;
-    letter-spacing: 1px;
-}
-.popup_map{
-    width: 1000px;
-    height: 0;
-    background-color: white;
-    border: none;
-    border-radius: 10px;
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    z-index: 1;
-    transition: 0.5s ease-in-out;
-}
-.icon_close{
-    display: none;
-    justify-content: flex-end;
-    padding: 10px 10px;
-    font-size: 20px;
-    cursor: pointer;
-}
 
+
+/* IFRAME MAP LOCALISATION */
+.iframe_map{
+    width: 100%;
+    height: 100%;
+}
 
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
@@ -173,10 +175,18 @@ PARTIE CSS DE CHAQUES GRILLES. C EST ICI QUE LA MISE EN PLACE (ALIGNEMENT, PADDI
     display: flex;
     flex-direction: row;
     align-items: center;
+    opacity: 0;
+
+}
+.label25{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .label19, .label20{
     display: flex;
     flex-direction: column;
+    opacity: 0;
 }
 .input{
     overflow: hidden;
@@ -225,6 +235,8 @@ DISPOSITION SUR L ECRAN AVEC CSS GRID: POUR MODIFIER L EMPLACEMENT D UNE GRILLE 
 .label4{grid-area: proximity;}
 .label23{grid-area: localisation;}
 .geolocal{grid-area: title;}
+.label24{grid-area: map;}
+.label25{grid-area: valid}
 
 
 .label5{grid-area: method}
