@@ -6,6 +6,8 @@ window.addEventListener('load', ()=>{
             document.querySelector('.label' + k).style.opacity = '1';
         },150 * k);
     }
+    document.querySelector('.label23').style.transition = '0.4s';
+    document.querySelector('.label23').style.opacity = '1';
 });
 
 window.addEventListener('scroll',()=>{

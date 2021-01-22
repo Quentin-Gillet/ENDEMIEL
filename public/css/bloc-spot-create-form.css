@@ -276,13 +276,19 @@ DISPOSITION SUR L ECRAN AVEC CSS GRID: POUR MODIFIER L EMPLACEMENT D UNE GRILLE 
 @media screen and (max-width: 1600px) {
     .block1{
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 50px 50px 50px 50px;
+        grid-template-rows: repeat(10, 50px);
         grid-gap: 25px 25px;
         padding-bottom: 30px;
         grid-template-areas: "title title"
         "name recommended"
         "proximity exposition"
-        "localisation .";
+        "localisation ."
+        "map map"
+        "map map"
+        "map map"
+        "map map"
+        "map map"
+        "valid valid";
     }
 }
 @media screen and (max-width: 1500px){
@@ -311,13 +317,22 @@ DISPOSITION SUR L ECRAN AVEC CSS GRID: POUR MODIFIER L EMPLACEMENT D UNE GRILLE 
 @media screen and (max-width: 1000px){
     .block1{
         grid-template-columns: 1fr;
-        grid-template-rows: 50px 50px 50px 50px 50px 50px;
+        grid-template-rows: repeat(15, 50px);
         grid-template-areas: "title"
         "name"
         "recommended"
         "proximity"
         "exposition"
-        "localisation";
+        "localisation"
+        "map"
+        "map"
+        "map"
+        "map"
+        "map"
+        "map"
+        "map"
+        "map"
+        "valid";
     }
     .block2{
         grid-template-columns: 1fr;
