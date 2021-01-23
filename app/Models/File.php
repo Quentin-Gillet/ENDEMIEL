@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 
 class File extends Model
 {
@@ -12,11 +11,13 @@ class File extends Model
 
     protected $fillable = ['bloc_site_id', 'url', 'file_type', 'file_upload_id'];
 
-    public function blocSpot(){
+    public function blocSpot()
+    {
         return $this->belongsTo('App\Models\BlocSpot', 'id', 'bloc_site_id');
     }
 
-    public function getStoragePath(){
+    public function getStoragePath(): string
+    {
         return asset('/storage/' . $this->url);
     }
 }

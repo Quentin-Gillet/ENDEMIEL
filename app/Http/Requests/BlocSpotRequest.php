@@ -30,7 +30,7 @@ class BlocSpotRequest extends FormRequest
             'lat' => 'required|numeric',
             'lng' => 'required|numeric',
             'site-name' => 'required|max:255',
-            'recommend-site-for' => 'required|array',
+            'recommended-site-for' => 'required|array',
             'exposure' => 'required|array',
             'near-city' => 'required|max:255',
             'approach-method' => 'required|numeric',
@@ -39,7 +39,7 @@ class BlocSpotRequest extends FormRequest
             'block-reception-quality' => 'required|array',
             'climbing-type' => 'required',
             'equipment-type' => 'required',
-            'several-cliff' => 'required|boolean',
+            'several-cliff' => 'required',
             'max-height' => 'required|numeric',
             'ways-number' => 'required',
             'quotation-min' => 'required',
@@ -49,7 +49,7 @@ class BlocSpotRequest extends FormRequest
             'sockets-type' => 'required|array',
             'restriction' => 'required',
             'miscellaneous-information' => 'required',
-            //'file_upload_id' => 'required',
+            'file_upload_id' => 'array',
         ];
     }
 
@@ -59,7 +59,28 @@ class BlocSpotRequest extends FormRequest
             'lat.required' => "Nous avons besoin de la latitude.",
             'lng.required' => 'Nous avons besoin de la longitude.',
             'site-name.required' => 'Le site doit avoir un nom.',
-            'site-name.max' => 'Le nom du site ne peut faire maximum 255 caractères.',
+            'site-name.max' => 'Le nom du site ne peut faire que 255 caractères.',
+            'recommended-site-for.required' => 'Pour qui le site est recommandé ?',
+            'exposure' => 'Quel est l\'exposition du site',
+            'near-city' => 'Quelle est la ville la plus proche ?',
+            'near-city.max' => 'Le nom de la ville ne peut faire que 255 caractères.',
+            'approach-method' => 'Par quelle methode peut-on approcher ?',
+            'approach-time' => 'Combien de temps pour accéder au site ?',
+            'for-children' => 'Le site peut accueillir des enfants ?',
+            'block-reception-quality' => 'Les blocs de receptions sont-ils de bonnes qualités ?',
+            'climbing-type' => 'Quel est le type d\'escalade',
+            'equipment-type' => 'Quel est le type d\'équipement présent ?',
+            'several-cliff' => 'A-t-il plusieurs falaises ?',
+            'max-height' => 'Quelle est la hauteur maximale ?',
+            'ways-number' => 'Combien de voies sont présentes ?',
+            'quotation-min' => 'Quelle est la difficulté minimal ?',
+            'quotation-max' => 'Quelle est la difficulté maximal ?',
+            'rock' => 'Quelle est le type de roche ?',
+            'profile' => 'Quel est le profil ?',
+            'sockets-type' => 'Quelles sont les types de prises ?',
+            'restriction' => 'Quelles sont les restrictions ?',
+            'miscellaneous-information' => 'Quelles sont les informations du site ?',
+            'file_upload_id' => 'Au moins une image dois être présente',
         ];
     }
 
@@ -70,11 +91,12 @@ class BlocSpotRequest extends FormRequest
      */
     protected function failedValidation(Validator $validator)
     {
-        return;
-        if ($validator->fails()){
-            $file = File::where('file_upload_id', $this->request->get('file_upload_id'))->first();
-            Storage::delete($file->url);
-            $file->delete();
+        if ($validator->fails()) {
+            foreach ($this->request->get('file-upload-id') as $fileId) {
+                $file = File::where('file_upload_id', $fileId)->first();
+                Storage::delete($file->url);
+                $file->delete();
+            }
         }
     }
 

@@ -6,19 +6,19 @@ var googleMapScript = document.createElement('script');
 googleMapScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCLOBBi470XIAX1gnetthnSwET6XtorLEM&callback=initMap&language=fr';
 googleMapScript.defer = true;
 
-/*document.head.appendChild(googleMapScript);
+document.head.appendChild(googleMapScript);
 
 window.initMap = function() {
     let map, infoWindow, spotMarker = new google.maps.Marker;
 
-    let markerLat = document.querySelector('#marker_lat_input');
-    let markerLng = document.querySelector('#marker_lng_input');
+    let markerLat = document.querySelector('#lat');
+    let markerLng = document.querySelector('#lng');
 
     var latLng;
 
-    if(markerLat.value && markerLng.value){
+    if (markerLat.value && markerLng.value) {
         latLng = {lat: parseFloat(markerLat.value), lng: parseFloat(markerLng.value)};
-    }else{
+    } else {
         latLng = {lat: 48.866667, lng: 2.333333};
     }
 
@@ -34,11 +34,19 @@ window.initMap = function() {
         streetViewControl: false, //A voir TODO
         rotateControl: false,
         fullscreenControl: true,
-        gestureHandling: 'greedy',
+        gestureHandling: 'cooperative',
         minZoom: 6,
+        restriction: {
+            latLngBounds: {
+                north: 53,
+                south: 40,
+                east: 10,
+                west: -7,
+            }
+        }
     };
 
-    map = new google.maps.Map(document.getElementById('container_map'), options);
+    map = new google.maps.Map(document.getElementById('gmap_canvas'), options);
     spotMarker.setMap(map);
 
     if (markerLat.value && markerLng.value){
@@ -94,93 +102,108 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
             : "Error: Your browser doesn't support geolocation."
     );
     infoWindow.open(map);
-}*/
+}
 
 document.querySelector('#bloc-form').addEventListener('submit', function (e) {
     e.preventDefault();
-    /*if (checkInputEmpty()){
+    if (checkInputEmpty()) {
         return;
     }
-    current_uploader.start();*/
+    image_uploader.start();
+    file_uploader.start();
 });
 
-function force_submit() {
-    document.querySelector('#bloc-form').submit();
-}
+var completed_upload = 0;
 
-/*
-var current_uploader = new plupload.Uploader({
+var image_uploader = new plupload.Uploader({
     "runtimes": "html5",
-    "browse_button": "browse-button",
+    "browse_button": "image-upload",
     "url": "/bloc-spot/upload",
     "headers": {
         "Accept": "application/json",
-        "X-CSRF-TOKEN" : document.querySelector('meta[name="csrf-token"]').content
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     },
-    "chunk_size": "5mo",
+    "chunk_size": "3mo",
     "unique_names": true,
+    filters: {
+        mime_types: [
+            {title: 'Image files', extensions: 'jpg,jpeg,png'}
+        ],
+        max_file_size: '10mo',
+    },
     init: {
-        FilesAdded: function (up, files){
+        FilesAdded: function (up, files) {
             allFiles.push(files);
-            document.querySelector(".label_title").innerHTML = files.length + " fichier(s) choisi";
+            document.querySelector("#image-upload-text").innerHTML = files.length + " fichier(s) choisi";
         },
-        UploadProgress: function(up, file) {
-            document.querySelector("label[for='progress']").innerHTML = file.percent + '%';
-            document.getElementById('progress').value = file.percent;
+        UploadProgress: function (up, file) {
+            document.querySelector("label[for='image-upload-progress']").innerHTML = file.percent + '%';
+            document.getElementById('image-upload-progress').value = file.percent;
         },
-        UploadComplete: function(up, files){
+        UploadComplete: function (up, files) {
             files.forEach(file => {
-                document.getElementById('hidden_input').innerHTML += `<input type="hidden" name="file_upload_id" value="${file.id}">`;
+                document.getElementById('hidden_input').innerHTML += `<input type="hidden" name="file-upload-id[]" value="${file.id}">`;
             });
-            document.querySelector('#bloc-form').submit();
+            completed_upload += 1;
+            if (completed_upload === 2) document.querySelector('#bloc-form').submit();
         },
-        Error: function(up, err) {
+        Error: function (up, err) {
             console.log(err);
         }
     }
 });
-*/
-current_uploader.init();
+
+var file_uploader = new plupload.Uploader({
+    "runtimes": "html5",
+    "browse_button": "file-upload",
+    "url": "/bloc-spot/upload",
+    "headers": {
+        "Accept": "application/json",
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+    },
+    "chunk_size": "3mo",
+    "unique_names": true,
+    filters: {
+        mime_types: [
+            {title: 'Image files', extensions: 'pdf'}
+        ],
+        max_file_size: '10mo',
+    },
+    init: {
+        FilesAdded: function (up, files) {
+            allFiles.push(files);
+            document.querySelector("#file-upload-text").innerHTML = files.length + " fichier(s) choisi";
+        },
+        UploadProgress: function (up, file) {
+            document.querySelector("label[for='file-upload-progress']").innerHTML = file.percent + '%';
+            document.getElementById('file-upload-progress').value = file.percent;
+        },
+        UploadComplete: function (up, files) {
+            files.forEach(file => {
+                document.getElementById('hidden_input').innerHTML += `<input type="hidden" name="file-upload-id[]" value="${file.id}">`;
+            });
+            completed_upload += 1;
+            if (completed_upload === 2) document.querySelector('#bloc-form').submit();
+        },
+        Error: function (up, err) {
+            console.log(err);
+        }
+    }
+});
+
+image_uploader.init();
+file_uploader.init();
 
 function checkInputEmpty() {
-    var input_name_value = document.querySelector('.input_name').value;
-    var input_desc_value = document.querySelector('.input_description').value;
+    let markerLat = document.querySelector('#lat').value;
+    let markerLng = document.querySelector('#lng').value;
 
-    let markerLat = document.querySelector('#marker_lat_input').value;
-    let markerLng = document.querySelector('#marker_lng_input').value;
-
-    let waysNumber = document.querySelector('#ways_number').value
-
-    var input_name_error = document.querySelector('#input_name_error');
-    var input_desc_error = document.querySelector('#input_desc_error');
-    var input_file_error = document.querySelector('#input_file_error');
-    var input_ways_error = document.querySelector('#input_ways_error');
-    var input_map_error = document.querySelector('#input_map_error');
-
-    input_name_error.innerHTML = '';
-    input_desc_error.innerHTML = '';
-    input_file_error.innerHTML = '';
-    input_ways_error.innerHTML = '';
-    input_map_error.innerHTML = '';
-
-    if(input_name_value == null || input_name_value === ''){
-        input_name_error.innerHTML = 'Requis';
+    if (allFiles.length === 0) {
+        console.log('missed files');
         return true;
     }
-    if(input_desc_value == null || input_desc_value === ''){
-        input_desc_error.innerHTML = 'Requis';
-        return true;
-    }
-    if (allFiles.length === 0){
-        input_file_error.innerHTML = 'Requis';
-        return true;
-    }
-    if (!markerLat && !markerLng){
-        input_map_error.innerHTML = 'Requis';
-        return true;
-    }
-    if(waysNumber == null ){
-        input_ways_error.innerHTML = 'Requis, doit être un nombre valide';
+    if (!markerLat && !markerLng) {
+        console.log('missed marker');
         return true;
     }
     return false;

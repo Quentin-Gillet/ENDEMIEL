@@ -1,42 +1,34 @@
-{{--
-Lire les instructions ca commence et termine de la meme facon, le schema est le meme tous le temps
-Type d'input:
- - text
- - file
- - textbox
- - select single
- - select multiple (style "multiselect.css" a part, regarder comment ca marche et ne pas modifier le nom des classes)
- --}}
+@extends('layouts.master')
+@section('page_title', 'add a spot')
 
-@include('layouts.navbar')
-<section class="block-content">
-    <div class="block-content2">
-        <h2 class="h2">Le spot</h2>
-        <p class="p">Merci de décrire le plus précisément possible le spot d'escalade. </p>
-        <form method="POST" enctype="multipart/form-data" id="bloc-form" action="{{ route('bloc-spot.store') }}">
-            @csrf
-            @method("post")
-            <div class="block1" id="block1"> {{--    Chaque partie est separé en block    --}}
+@section('content')
+    <section class="block-content">
+        <div class="block-content2">
+            <h2 class="h2">Le spot</h2>
+            <p class="p">Merci de décrire le plus précisément possible le spot d'escalade. </p>
+            <form method="POST" enctype="multipart/form-data" id="bloc-form" action="{{ route('bloc-spot.store') }}">
+                @csrf
+                @method("post")
+                <div class="block1" id="block1">
                 <span class="geolocal"><i
-                        class="fas fa-map-marker-alt"></i> Géo-localisation :</span> {{--    Titre du block    --}}
-                <div class="label1">
-                    <label class="label" for="site-name">{{ __('bloc-spot.bloc-form.site-name') }}</label> {{--    nom de l'input text    --}}
-                    <input name="site-name" class="input" type="text" id="site-name" placeholder="{{ __('bloc-spot.bloc-form.site-name') }}"> {{--   input text     --}}
-                </div>
-                <div class="label2">
-                    <label class="label" for="recommended-site-for">{{ __('bloc-spot.bloc-form.recommended-site-for') }}</label> {{--   nom du select     --}}
-                    <select name="recommended-site-for[]" id="recommended-site-for" multiple size="1"> {{--    Select multiple ATTENTION    --}}
-                        {{--  Pour changer le style des select multiple modifier le fichier "vanillaSelectBox.css"     --}}
-                        <option value="beginner">Débutants</option>
-                        <option value="amateur">Amateurs</option>
-                        <option value="confirmed">Confirmés</option>
-                        <option value="high_level">De haut niveau</option>
-                    </select>
-                </div>
-                <div class="label3">
-                    <label class="label" for="exposure">{{ __('bloc-spot.bloc-form.exposure') }}</label>
-                    <select name="exposure[]" id="exposure" multiple size="1">
-                        <option value="north">N</option>
+                        class="fas fa-map-marker-alt"></i> Géo-localisation :</span>
+                    <div class="label1">
+                        <label class="label" for="site-name">{{ __('bloc-spot.bloc-form.site-name') }}</label>
+                        <input name="site-name" class="input" type="text" id="site-name" placeholder="{{ __('bloc-spot.bloc-form.site-name') }}">
+                    </div>
+                    <div class="label2">
+                        <label class="label" for="recommended-site-for">{{ __('bloc-spot.bloc-form.recommended-site-for') }}</label>
+                        <select name="recommended-site-for[]" id="recommended-site-for" multiple size="1">
+                            <option value="beginner">Débutants</option>
+                            <option value="amateur">Amateurs</option>
+                            <option value="confirmed">Confirmés</option>
+                            <option value="high_level">De haut niveau</option>
+                        </select>
+                    </div>
+                    <div class="label3">
+                        <label class="label" for="exposure">{{ __('bloc-spot.bloc-form.exposure') }}</label>
+                        <select name="exposure[]" id="exposure" multiple size="1">
+                            <option value="north">N</option>
                         <option value="east-north">NE</option>
                         <option value="east">E</option>
                         <option value="east-south">SE</option>
@@ -44,29 +36,29 @@ Type d'input:
                         <option value="west-south">SW</option>
                         <option value="west">W</option>
                         <option value="west-north">NW</option>
-                    </select>
+                        </select>
+                    </div>
+                    <div class="label4">
+                        <label class="label" for="near-city">{{ __('bloc-spot.bloc-form.near-city') }}</label>
+                        <input class="input" name="near-city" type="text" id="near-city" placeholder="{{ __('bloc-spot.bloc-form.near-city') }}">
+                    </div>
+                    <div class="label23">
+                        <div class="label">{{ __('bloc-spot.bloc-form.cliff-location') }} :</div> {{--   juste le label      --}}
+                    </div>
+                    {{--   Ici la map fait comme tu veux pour ca      --}}
+                    <div class="label24">
+                        <div class="iframe_map" id="gmap_canvas"></div>
+                    </div>
                 </div>
-                <div class="label4">
-                    <label class="label" for="near-city">{{ __('bloc-spot.bloc-form.near-city') }}</label>
-                    <input class="input" name="near-city" type="text" id="near-city" placeholder="{{ __('bloc-spot.bloc-form.near-city') }}">
-                </div>
-                <div class="label23">
-                    <div class="label">{{ __('bloc-spot.bloc-form.cliff-location') }} :</div> {{--   juste le label      --}}
-                </div>
-                {{--   Ici la map fait comme tu veux pour ca      --}}
-                <div class="label24"><iframe class="iframe_map" width="500" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=bouc%20bel%20air&t=&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>{{--   Ici mettre la carte--}}
-                {{--   Valid Button      --}}
-                <div class="label25"><button class="valid_button">Valider</button></div>
-            </div>
-            <hr>
-            <div class="block2" id="block2">
-                <span class="approche"><i class="fas fa-walking"></i> Marche d'approche :</span>
+                <hr>
+                <div class="block2" id="block2">
+                    <span class="approche"><i class="fas fa-walking"></i> Marche d'approche :</span>
 
-                <div class="label5">
-                    <label class="label" for="approach-method">{{ __('bloc-spot.bloc-form.approach-method') }}</label>
-                    <select class="input" name="approach-method" id="approach-method">
-                        <option value="1">En montée et descente raide</option>
-                        <option value="2">En montée et descente facile</option>
+                    <div class="label5">
+                        <label class="label" for="approach-method">{{ __('bloc-spot.bloc-form.approach-method') }}</label>
+                        <select class="input" name="approach-method" id="approach-method">
+                            <option value="1">En montée et descente raide</option>
+                            <option value="2">En montée et descente facile</option>
                         <option value="3">En montée et descente</option>
                         <option value="4">En bateau</option>
                         <option value="5">En rappel</option>
@@ -245,58 +237,75 @@ Type d'input:
                 </div>
                 <div class="label19">
                     <label class="labelexep" for="restriction">{{ __('bloc-spot.bloc-form.restrictions') }}</label>
-                    <textarea class="input2" name="restriction" id="restriction" cols="30" rows="5"></textarea>
+                    <textarea class="input2" name="restriction" id="restriction" cols="30" rows="5">Aucunes</textarea>
                 </div>
                 <div class="label20">
                     <label class="labelexep" for="miscellaneous-information">{{ __('bloc-spot.bloc-form.miscellaneous-information') }}</label>
-                    <textarea class="input2" name="miscellaneous-information" id="miscellaneous-information" cols="30" rows="5"></textarea>
+                    <textarea class="input2" name="miscellaneous-information" id="miscellaneous-information" cols="30" rows="5">Aucunes</textarea>
                 </div>
             </div>
-            <hr>
-            <div class="block5" id="block5">
-                <span class="apropos"><i class="fas fa-plus"></i> Détails</span>
-                <div class="label21">
-                    <label class="label" for="image-upload">{{ __('bloc-spot.bloc-form.image-upload') }}</label>
-                    <label class="button_upload">Choisir un fichier
-                        <input class="file" type="file" id="image-upload">
-                    </label>
+                <hr>
+                <div class="block5" id="block5">
+                    <span class="apropos"><i class="fas fa-plus"></i> Détails</span>
+                    <div class="label21">
+                        <label class="label" for="image-upload">{{ __('bloc-spot.bloc-form.image-upload') }}</label>
+                        <label class="button_upload"><span id="image-upload-text">Choisir un fichier</span>
+                            <div id="image-upload"></div>
+                        </label>
+                        <div>
+                            <label for="image-upload-progress"></label>
+                            <progress id="image-upload-progress" value="0"></progress>
+                        </div>
+                    </div>
+                    <div class="label22">
+                        <label class="label" for="file-upload">{{ __('bloc-spot.bloc-form.file-upload') }}</label>
+                        <label class="button_upload"><span id="file-upload-text">Choisir un fichier</span>
+                            <div id="file-upload"></div>
+                        </label>
+                        <div>
+                            <label for="file-upload-progress"></label>
+                            <progress id="file-upload-progress" value="0"></progress>
+                        </div>
+                    </div>
                 </div>
-                <div class="label22">
-                    <label class="label" for="file-upload">{{ __('bloc-spot.bloc-form.file-upload') }}</label>
-                    <label class="button_upload">Choisir un fichier
-                        <input class="file" type="file" id="image-upload">
-                    </label>
+                <div id="hidden_input">
+                    <input type="hidden" name="lat" id="lat" value="">
+                    <input type="hidden" name="lng" id="lng" value="">
                 </div>
-            </div>
-            <input type="hidden" name="lat" value="0">
-            <input type="hidden" name="lng" value="0">
-            <button class="submit" type="submit" onclick="force_submit()"><span class="label-submit">Envoyer</span></button>
-        </form>
-    </div>
-    @include('layouts.footer')
-</section>
-<script>
-    document.addEventListener('DOMContentLoaded', function (event) {
-        //setup all multiselect
-        const maxWidth = 300;
-        const maxHeight = 250;
-        const minWidth = 200;
+                <button class="submit" id="submit_button" type="submit"><span class="label-submit">Envoyer</span></button>
+            </form>
+        </div>
+    </section>
+@endsection
 
-        new vanillaSelectBox("#recommended-site-for", {search: false, maxWidth: maxWidth, maxHeight: maxHeight, minWidth: minWidth, placeHolder: "{{ __('bloc-spot.bloc-form.recommended-site-for') }}"});
-        new vanillaSelectBox("#exposure", {search: false, maxWidth: maxWidth, maxHeight: maxHeight, minWidth: minWidth, placeHolder: "{{ __('bloc-spot.bloc-form.exposure') }}"});
-        new vanillaSelectBox("#block-reception-quality", {search: false, maxWidth: maxWidth, maxHeight: maxHeight, minWidth: minWidth, placeHolder: "{{ __('bloc-spot.bloc-form.block-reception-quality') }}"});
-        new vanillaSelectBox("#rock", {search: false, maxWidth: maxWidth, maxHeight: maxHeight, minWidth: minWidth, placeHolder: "{{ __('bloc-spot.bloc-form.rock') }}"}).setValue("unknown");
-        new vanillaSelectBox("#profile", {search: false, maxWidth: maxWidth, maxHeight: maxHeight, minWidth: minWidth, placeHolder: "{{ __('bloc-spot.bloc-form.profile') }}"});
-        new vanillaSelectBox("#sockets-types", {search: false, maxWidth: maxWidth, maxHeight: maxHeight, minWidth: minWidth, placeHolder: "{{ __('bloc-spot.bloc-form.sockets-types') }}"});
-    });
-</script>
+@once
+@section('extra-script')
+    <script>
+        document.addEventListener('DOMContentLoaded', function (event) {
+            //setup all multiselect
+            const maxWidth = 300;
+            const maxHeight = 250;
+            const minWidth = 200;
 
-<link rel="stylesheet" href="{{ asset('css/vanillaSelectBox.css') }}">
-<script type="text/javascript" src="{{ asset('vendor/jildertmiedema/laravel-plupload/js/plupload.full.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/bloc-form.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/vanillaSelectBox.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/navbar-script.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/popup_map.js') }}"></script>
-<script src="https://kit.fontawesome.com/4c22a0d41e.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="{{ asset('css/bloc-spot-create-form.css') }}">
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+            new vanillaSelectBox("#recommended-site-for", {search: false, maxWidth: maxWidth, maxHeight: maxHeight, minWidth: minWidth, placeHolder: "{{ __('bloc-spot.bloc-form.recommended-site-for') }}"});
+            new vanillaSelectBox("#exposure", {search: false, maxWidth: maxWidth, maxHeight: maxHeight, minWidth: minWidth, placeHolder: "{{ __('bloc-spot.bloc-form.exposure') }}"});
+            new vanillaSelectBox("#block-reception-quality", {search: false, maxWidth: maxWidth, maxHeight: maxHeight, minWidth: minWidth, placeHolder: "{{ __('bloc-spot.bloc-form.block-reception-quality') }}"});
+            new vanillaSelectBox("#rock", {search: false, maxWidth: maxWidth, maxHeight: maxHeight, minWidth: minWidth, placeHolder: "{{ __('bloc-spot.bloc-form.rock') }}"}).setValue("unknown");
+            new vanillaSelectBox("#profile", {search: false, maxWidth: maxWidth, maxHeight: maxHeight, minWidth: minWidth, placeHolder: "{{ __('bloc-spot.bloc-form.profile') }}"});
+            new vanillaSelectBox("#sockets-types", {search: false, maxWidth: maxWidth, maxHeight: maxHeight, minWidth: minWidth, placeHolder: "{{ __('bloc-spot.bloc-form.sockets-types') }}"});
+        });
+    </script>
+@endsection
+
+@section('extra')
+    <link rel="stylesheet" href="{{ asset('css/vanillaSelectBox.css') }}">
+    <script type="text/javascript" src="{{ asset('vendor/jildertmiedema/laravel-plupload/js/plupload.full.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bloc-form.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/vanillaSelectBox.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/navbar-script.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/popup_map.js') }}"></script>
+    <script src="https://kit.fontawesome.com/4c22a0d41e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ asset('css/bloc-spot-create-form.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@endsection
+@endonce

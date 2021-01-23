@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BlocSpotRequest;
 use App\Models\BlocSpot;
+use App\Models\File;
 use Illuminate\Http\Request;
 
 class BlocSpotController extends Controller
@@ -31,6 +32,8 @@ class BlocSpotController extends Controller
 
     public function store(BlocSpotRequest $request)
     {
+        $request->validated();
+
         $inputToJson = [];
         foreach ($request->all() as $key => $value) {
             if ($key == 'site-name' || $key == 'lat' || $key == 'lng' || $key == 'file_id' || $key == '_token' || $key == '_method') continue;
@@ -46,12 +49,14 @@ class BlocSpotController extends Controller
         ];
 
         $blocSpot = BlocSpot::create($dataToSave);
-        /*$file = File::where('file_upload_id', '=', $validated['file_upload_id'])->first();
-        $blocSpot->files()->save($file);
+        foreach ($request->get('file-upload-id') as $fileId) {
+            $file = File::where('file_upload_id', '=', $fileId)->first();
+            $blocSpot->files()->save($file);
+        }
 
-        if ($user = auth()->user()){
+        if ($user = auth()->user()) {
             $user->blocSpot()->save($blocSpot);
-        }*/
+        }
         return redirect()->route('index')->with('success', 'Nouveau spot ajouter et en attente de vérification.');
     }
 

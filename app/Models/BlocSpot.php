@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 class BlocSpot extends Model
 {
@@ -30,16 +29,5 @@ class BlocSpot extends Model
         return $this->files()->exists();
     }
 
-    public static function getAccessibilityAttributes(){
-        return DB::table('bloc_spot_accessibility')->get('value');
-    }
-
-    public static function getDifficultiesAttributes(){
-        return DB::table('bloc_spot_difficulties')->get('value');
-    }
-
-    public static function getTypesAttributes(){
-        return DB::table('bloc_spot_types')->get('value');
-    }
 
 }
