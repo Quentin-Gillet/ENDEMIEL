@@ -283,9 +283,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function (event) {
             //setup all multiselect
-            const maxWidth = 300;
+            const maxWidth = 400;
             const maxHeight = 250;
-            const minWidth = 200;
+            const minWidth = 250;
 
             new vanillaSelectBox("#recommended-site-for", {search: false, maxWidth: maxWidth, maxHeight: maxHeight, minWidth: minWidth, placeHolder: "{{ __('bloc-spot.bloc-form.recommended-site-for') }}"});
             new vanillaSelectBox("#exposure", {search: false, maxWidth: maxWidth, maxHeight: maxHeight, minWidth: minWidth, placeHolder: "{{ __('bloc-spot.bloc-form.exposure') }}"});
