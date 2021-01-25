@@ -20,9 +20,11 @@
 <body>
 @include('layouts.navbar')
 
+<section class="block-content">
 @yield('content')
 
 @include('layouts.footer')
+</section>
 
 @yield('extra-script')
 @yield('extra')

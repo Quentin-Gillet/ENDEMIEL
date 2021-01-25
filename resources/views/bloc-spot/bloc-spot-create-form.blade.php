@@ -2,8 +2,8 @@
 @section('page_title', 'add a spot')
 
 @section('content')
-    <section class="block-content">
         <div class="block-content2">
+            <div class="animationProgress"></div>
             <h2 class="h2">Le spot</h2>
             <p class="p">Merci de décrire le plus précisément possible le spot d'escalade. </p>
             <form method="POST" enctype="multipart/form-data" id="bloc-form" action="{{ route('bloc-spot.store') }}">
@@ -254,7 +254,7 @@
                         </label>
                         <div>
                             <label for="image-upload-progress"></label>
-                            <progress id="image-upload-progress" value="0" style="display: none"></progress>
+                            <progress id="image-upload-progress" value="0"></progress>
                         </div>
                     </div>
                     <div class="label22">
@@ -264,7 +264,7 @@
                         </label>
                         <div>
                             <label for="file-upload-progress"></label>
-                            <progress id="file-upload-progress" value="0" style="display: none"></progress>
+                            <progress id="file-upload-progress" value="0"></progress>
                         </div>
                     </div>
                 </div>
@@ -275,7 +275,6 @@
                 <button class="submit" id="submit_button" type="submit"><span class="label-submit">Envoyer</span></button>
             </form>
         </div>
-    </section>
 @endsection
 
 @once
@@ -303,7 +302,6 @@
     <script type="text/javascript" src="{{ asset('js/bloc-form.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/vanillaSelectBox.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/navbar-script.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/popup_map.js') }}"></script>
     <script src="https://kit.fontawesome.com/4c22a0d41e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/bloc-spot-create-form.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">

@@ -18,7 +18,7 @@ class SetupBlocSpotsTable extends Migration
             $table->float('lat');
             $table->float('lng');
             $table->text('site-name');
-            $table->text("data")->after("site-name");
+            $table->text("data");
             $table->string('accept_status')->default('pending');
             $table->string('author_id')->nullable();
             $table->timestamps();
