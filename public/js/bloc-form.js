@@ -136,6 +136,9 @@ var image_uploader = new plupload.Uploader({
             allFiles.push(files);
             document.querySelector("#image-upload-text").innerHTML = files.length + " fichier(s) choisi";
         },
+        BeforeUpload: function (up, files) {
+            document.getElementById('image-upload-progress').style.display = "block";
+        },
         UploadProgress: function (up, file) {
             document.querySelector("label[for='image-upload-progress']").innerHTML = file.percent + '%';
             document.getElementById('image-upload-progress').value = file.percent;
@@ -174,7 +177,11 @@ var file_uploader = new plupload.Uploader({
             allFiles.push(files);
             document.querySelector("#file-upload-text").innerHTML = files.length + " fichier(s) choisi";
         },
+        BeforeUpload: function (up, files) {
+            document.getElementById('file-upload-progress').style.display = "block";
+        },
         UploadProgress: function (up, file) {
+            document.getElementById('file-upload-progress').style.display = "block";
             document.querySelector("label[for='file-upload-progress']").innerHTML = file.percent + '%';
             document.getElementById('file-upload-progress').value = file.percent;
         },
