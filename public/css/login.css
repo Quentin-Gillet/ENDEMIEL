@@ -2,43 +2,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@900&family=Quicksand:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap');
 
-body{
-    background: rgb(222,227,227);
-    background: -moz-radial-gradient(circle, rgba(222,227,227,1) 50%, rgba(249,252,252,1) 100%);
-    background: -webkit-radial-gradient(circle, rgba(222,227,227,1) 50%, rgba(249,252,252,1) 100%);
-    background: radial-gradient(circle, rgba(222,227,227,1) 50%, rgba(249,252,252,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dee3e3",endColorstr="#f9fcfc",GradientType=1);
-}
-.container{
+.loginContainer {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 400px;
     height: 500px;
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    -webkit-box-shadow: 1px 1px 10px 0px rgba(255,255,255,1);
-    -moz-box-shadow: 1px 1px 10px 0px rgba(255,255,255,1);
-    box-shadow: 1px 1px 10px 0px rgba(255,255,255,1);
+    -webkit-box-shadow: 1px 1px 10px 0px rgba(255, 255, 255, 1);
+    -moz-box-shadow: 1px 1px 10px 0px rgba(255, 255, 255, 1);
+    box-shadow: 1px 1px 10px 0px rgba(255, 255, 255, 1);
     border-radius: 5px;
 
 }
-.form{
+
+.loginForm {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.title{
+
+.loginTitle {
     font-family: 'Nunito', sans-serif;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 2px;
     text-align: center;
 }
-.input{
+
+.input {
     border: none;
     background-color: lightgrey;
     width: 80%;
