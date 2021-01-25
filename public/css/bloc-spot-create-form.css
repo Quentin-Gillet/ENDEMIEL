@@ -184,8 +184,6 @@ body{
     10% {transform: translateY(-10px)}
     20%,100% {transform: translateY(0)}
 }
-
-
 .label19 textarea, .label20 textarea{
     resize: none;
 }

@@ -2,7 +2,6 @@
 @section('page_title', 'home')
 
 @section('content')
-    <section class="section">
         <h2 class="intro">Des bons moments</h2>
         <p class="describe">Voici ici un petit paragraphe qui resume de trois petits trucs</p>
         <div class="container">
@@ -29,5 +28,4 @@
                 <p class="describe2">Voici un paragraphe qui parle de à propos, il pourra être modifié ect. Il explique rapidement ce que le site fait.</p>
             </div>
         </div>
-    </section>
 @endsection

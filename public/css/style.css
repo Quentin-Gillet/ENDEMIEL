@@ -31,7 +31,6 @@ body{
     background: -webkit-radial-gradient(circle, rgba(222,227,227,1) 50%, rgba(249,252,252,1) 100%);
     background: radial-gradient(circle, rgba(222,227,227,1) 50%, rgba(249,252,252,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dee3e3",endColorstr="#f9fcfc",GradientType=1);
-
 }
 .footer{
     position: relative;
@@ -66,6 +65,9 @@ body{
 .sublink:hover{
     color: #F59121;
 
+}
+.text{
+    text-align: center;
 }
 .title{
     color: white;

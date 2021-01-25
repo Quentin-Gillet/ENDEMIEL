@@ -20,7 +20,7 @@
 <body>
 @include('layouts.navbar')
 
-<section class="block-content">
+<section class="section">
 @yield('content')
 
 @include('layouts.footer')
