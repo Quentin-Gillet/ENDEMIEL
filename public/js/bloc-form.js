@@ -3,7 +3,7 @@ var allFiles = [];
 
 
 var googleMapScript = document.createElement('script');
-googleMapScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCLOBBi470XIAX1gnetthnSwET6XtorLEM&callback=initMap&language=fr';
+googleMapScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD9CXEPGs8nw4gNYB0cqtgptCwBh6ZsDeA&callback=initMap&language=fr';
 googleMapScript.defer = true;
 
 document.head.appendChild(googleMapScript);
