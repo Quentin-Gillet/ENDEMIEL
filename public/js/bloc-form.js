@@ -1,7 +1,3 @@
-var allFiles = [];
-
-
-
 var googleMapScript = document.createElement('script');
 googleMapScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD9CXEPGs8nw4gNYB0cqtgptCwBh6ZsDeA&callback=initMap&language=fr';
 googleMapScript.defer = true;
@@ -111,6 +107,10 @@ document.querySelector('#bloc-form').addEventListener('submit', function (e) {
 });
 
 var completed_upload = 0;
+var allFiles = [];
+var total_files_size = [0, 0];
+var uploaded_files_size = [0, 0]
+var actual_file_uploaded = [[null, 0], [null, 0]]
 
 var image_uploader = new plupload.Uploader({
     "runtimes": "html5",
@@ -131,17 +131,24 @@ var image_uploader = new plupload.Uploader({
     init: {
         FilesAdded: function (up, files) {
             allFiles.push(files);
+            files.forEach(file => {
+                total_files_size[0] += file.size
+            });
             document.querySelector("#image-upload-text").innerHTML = files.length + " fichier(s) choisi";
         },
         BeforeUpload: function (up, files) {
             document.getElementById('image-upload-progress').style.display = "block";
         },
         UploadProgress: function (up, file) {
-            document.querySelector("label[for='image-upload-progress']").innerHTML = file.percent + '% ' + 'complété(s)';
-            document.getElementById('image-upload-progress').value = '0.8';
-            setTimeout(()=>{
-                document.getElementById('image-upload-progress').value = '1';
-            },800);
+            if (actual_file_uploaded[0][0] == null || actual_file_uploaded[0][0] !== file.id) {
+                actual_file_uploaded[0][0] = file.id;
+                actual_file_uploaded[0][1] = 0;
+            }
+            uploaded_files_size[0] += file.loaded - actual_file_uploaded[0][1];
+            actual_file_uploaded[0][1] = file.loaded;
+            var percent = Math.floor((uploaded_files_size[0] / total_files_size[0]) * 100);
+            document.querySelector("label[for='image-upload-progress']").innerHTML = percent + '% ' + 'complété(s)';
+            document.getElementById('image-upload-progress').value = percent / 100;
         },
         UploadComplete: function (up, files) {
             files.forEach(file => {
@@ -175,15 +182,24 @@ var file_uploader = new plupload.Uploader({
     init: {
         FilesAdded: function (up, files) {
             allFiles.push(files);
+            files.forEach(file => {
+                total_files_size[1] += file.size
+            });
             document.querySelector("#file-upload-text").innerHTML = files.length + " fichier(s) choisi";
         },
         BeforeUpload: function (up, files) {
             document.getElementById('file-upload-progress').style.display = "block";
         },
         UploadProgress: function (up, file) {
-            document.getElementById('file-upload-progress').style.display = "block";
-            document.querySelector("label[for='file-upload-progress']").innerHTML = file.percent + '%';
-            document.getElementById('file-upload-progress').value = file.percent;
+            if (actual_file_uploaded[1][0] == null || actual_file_uploaded[1][0] !== file.id) {
+                actual_file_uploaded[1][0] = file.id;
+                actual_file_uploaded[1][1] = 0;
+            }
+            uploaded_files_size[1] += file.loaded - actual_file_uploaded[1][1];
+            actual_file_uploaded[1][1] = file.loaded;
+            var percent = Math.floor((uploaded_files_size[1] / total_files_size[1]) * 100);
+            document.querySelector("label[for='file-upload-progress']").innerHTML = percent + '% ' + 'complété(s)';
+            document.getElementById('file-upload-progress').value = percent / 100;
         },
         UploadComplete: function (up, files) {
             files.forEach(file => {
