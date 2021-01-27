@@ -3,8 +3,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap');
 
 .loginContainer {
-    position: relative;
-    margin: 100px auto 100px auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     width: 400px;
     height: 500px;
     background-color: white;
@@ -17,7 +19,9 @@
     border-radius: 5px;
 
 }
-
+.footer{
+    display: none;
+}
 .loginForm {
     display: flex;
     flex-direction: column;
@@ -28,7 +32,7 @@
     font-family: 'Nunito', sans-serif;
     text-transform: uppercase;
     font-weight: bold;
-    letter-spacing: 2px;
+    letter-spacing: 0.1rem;
     text-align: center;
 }
 
@@ -108,3 +112,12 @@
 .submit:hover, .submit2:hover{
     width: 75%;
 }
+
+
+@media screen and (max-width: 1400px){
+    .loginContainer{
+        zoom: 90%;
+    }
+
+}
+
