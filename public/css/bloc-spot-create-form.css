@@ -188,7 +188,30 @@ body{
     resize: none;
 }
 
-.
+.labelProgress{
+    font-family: 'Quicksand', sans-serif;
+    color: #1aa3ff;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-start;
+}
+.progressBar{
+    position: relative;
+    width: 150px;
+    height: 15px;
+}
+.progressBar::before{
+    content: '';
+    position: absolute;
+    opacity: 0.3;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 50%;
+    border-radius: 100px;
+    background-color: #2b6aff;
+}
 
 /* IFRAME MAP LOCALISATION */
 .iframe_map{
@@ -256,25 +279,6 @@ PARTIE CSS DE CHAQUES GRILLES. C EST ICI QUE LA MISE EN PLACE (ALIGNEMENT, PADDI
     gap: 20px;
     text-align: center;
 }
-
-.progressBar{
-    position: relative;
-    width: 300px;
-    height: 50px;
-}
-.progressBar::before{
-    content: '';
-    position: absolute;
-    opacity: 0.3;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    height: 50%;
-    border-radius: 100px;
-    background-color: #F59121;
-}
-
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
@@ -294,7 +298,7 @@ DISPOSITION SUR L ECRAN AVEC CSS GRID: POUR MODIFIER L EMPLACEMENT D UNE GRILLE 
 .label4{grid-area: proximity;}
 .label23{grid-area: localisation;}
 .geolocal{grid-area: title;}
-.label24{grid-area: map;}
+.label24{grid-area: map}
 .label25{grid-area: valid}
 
 
