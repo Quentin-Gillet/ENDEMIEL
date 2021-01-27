@@ -253,7 +253,7 @@
                             <div id="image-upload"></div>
                         </label>
                         <div>
-                            <label for="image-upload-progress"></label>
+                            <label class="labelProgress" for="image-upload-progress"></label>
                             <progress class="progressBar" id="image-upload-progress" value="0"></progress>
                         </div>
                     </div>

@@ -106,9 +106,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 document.querySelector('#bloc-form').addEventListener('submit', function (e) {
     e.preventDefault();
-    if (checkInputEmpty()) {
-        return;
-    }
     image_uploader.start();
     file_uploader.start();
 });
@@ -140,8 +137,11 @@ var image_uploader = new plupload.Uploader({
             document.getElementById('image-upload-progress').style.display = "block";
         },
         UploadProgress: function (up, file) {
-            document.querySelector("label[for='image-upload-progress']").innerHTML = file.percent + '%';
-            document.getElementById('image-upload-progress').value = file.percent;
+            document.querySelector("label[for='image-upload-progress']").innerHTML = file.percent + '% ' + 'complété(s)';
+            document.getElementById('image-upload-progress').value = '0.8';
+            setTimeout(()=>{
+                document.getElementById('image-upload-progress').value = '1';
+            },800);
         },
         UploadComplete: function (up, files) {
             files.forEach(file => {
